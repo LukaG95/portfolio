@@ -1,13 +1,39 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  /*font-family: "Montserrat", sans-serif;*/
+
+  -webkit-tap-highlight-color: transparent; /*To remove the blue background when tapping on links & icons on phone*/
+  background: #0E0E0E;
+}
+
+*:focus,
+*:active {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.noUserInteraction {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+html, body, #root{
+  height: 100%;
 }

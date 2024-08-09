@@ -1,0 +1,211 @@
+.Loader{
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.loading-bar{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  height: 3px;
+  width: 100%;
+
+  background: #BB5858;
+
+  animation: widthChange 5s ease;
+}
+
+.middle-wrapper{
+  position: absolute;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr); 
+  animation: gapChange 1.25s ease infinite, rotationChange 2.5s ease infinite;
+ 
+  .puzzle-cube{
+    position: relative;
+
+    height: 50px;
+    width: 50px;
+
+    background-color: #181818;
+    animation: colorChange 1.25s linear infinite;
+  }
+
+
+  :nth-child(1).puzzle-cube{
+    border-radius: 15px 0px 0px 0px;
+
+    div{
+      position: absolute;
+      background-color: #181818;
+      animation: colorChange 1.25s linear infinite;
+      z-index: 2;
+    }
+    
+    :nth-child(1){
+      height: 15px;
+      width: 15px;
+
+      right: -14px;
+      top: calc(50% - 7.5px);
+
+      border-radius: 0px 25px 25px 0px;
+    }
+
+    :nth-child(2){
+      height: 15px;
+      width: 15px;
+
+      bottom: -14px;
+      left: calc(50% - 7.5px);
+
+      border-radius: 0px 0px 25px 25px;
+    }
+
+  }
+
+
+  :nth-child(2).puzzle-cube{
+    border-radius: 0px 15px 0px 0px;
+
+    div{
+      position: absolute;
+    }
+
+    :nth-child(1){
+      height: 15px;
+      width: 13px;
+
+      left: 0px;
+      top: calc(50% - 7.5px);
+
+      border-radius: 0px 25px 25px 0px;
+    }
+
+    :nth-child(2){
+      height: 13px;
+      width: 15px;
+
+      bottom: 0px;
+      left: calc(50% - 7.5px);
+
+      border-radius: 25px 25px 0px 0px;
+    }
+
+  }
+  :nth-child(3).puzzle-cube{
+    border-radius: 0px 0px 0px 15px;
+
+    div{
+      position: absolute;
+    }
+
+    :nth-child(1){
+      height: 13px;
+      width: 15px;
+
+      top: 0px;
+      left: calc(50% - 7.5px);
+
+      border-radius: 0px 0px 25px 25px;
+    }
+
+    :nth-child(2){
+      height: 15px;
+      width: 13px;
+
+      right: 0px;
+      top: calc(50% - 7.5px);
+
+      border-radius: 25px 0px 0px 25px; 
+    }
+  }
+  :nth-child(4).puzzle-cube{
+    border-radius: 0px 0px 15px 0px;
+
+    div{
+      position: absolute;
+      background-color: #181818;
+      animation: colorChange 1.25s linear infinite;
+
+      z-index: 2;
+    }
+    
+    :nth-child(1){
+      height: 15px;
+      width: 15px;
+
+      top: -14px;
+      left: calc(50% - 7.5px);
+
+      border-radius: 25px 25px 0px 0px;
+    }
+
+    :nth-child(2){
+      height: 15px;
+      width: 15px;
+
+      left: -14px;
+      top: calc(50% - 7.5px);
+
+      border-radius: 25px 0px 0px 25px;
+    }
+  }
+
+}
+
+
+
+
+  @keyframes colorChange {
+    0% {
+      background-color: #3d3d3d;
+    }
+    50% {
+      background-color: #181818;
+    }
+    100% {
+      background-color: #3d3d3d;
+    }
+  }
+  @keyframes gapChange {
+    0% {
+      gap: 0px;
+    }
+    50% {
+      gap: 40px;
+    }
+    100% {
+      gap: 0px;
+    }
+  }
+
+  @keyframes rotationChange {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes widthChange {
+    0% {
+      width: 0&;
+    }
+    100% {
+      width: 100&;
+    }
+  }
