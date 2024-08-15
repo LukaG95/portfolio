@@ -51,7 +51,7 @@ function App() {
   const [websiteOption, setWebsiteOption] = useState(website_options[0]);
 
   useEffect(() => {
-    setTimeout(()=> setShowWebsite(true), 2500);    
+    setTimeout(()=> setShowWebsite(false), 2500);    
   }, [])
 
   useEffect(() => {
