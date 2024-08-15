@@ -1,0 +1,84 @@
+.price-block{
+  position: relative;
+
+  width: 280px;
+  height: 512px;
+
+  margin-right: 40px;
+
+  border: 1px solid #2B2B2B;
+  border-radius: 15px;
+
+  padding: 40px 35px;
+
+  transition: border 0.5s ease;
+
+  cursor: pointer;
+
+  .title, .benefits, .price{
+    color: #F6F6F6;
+    opacity: 0.5;
+  }
+
+  .title{
+    display: flex;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 40px;
+  }
+
+  .benefits{
+    font-size: 13px;
+
+    p{
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+  }
+
+  .price{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    bottom: 40px;
+    left: 0px;
+
+    font-size: 12px;
+  }
+
+  .button-wrapper{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    bottom: -18px;
+    left: 0px;
+
+    button{
+      background: #BB5858;
+      color: #f6f6f6;
+
+      border-radius: 10px;
+
+      padding: 10px 50px;
+
+      font-size: 15px;
+      font-weight: 800;
+      border: 1px solid #BB5858;
+      cursor: pointer;
+
+      transition: background 0.5s ease, border 0.5s ease;
+    }
+  }
+
+}

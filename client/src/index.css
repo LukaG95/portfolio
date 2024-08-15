@@ -2,10 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /*font-family: "Montserrat", sans-serif;*/
 
   -webkit-tap-highlight-color: transparent; /*To remove the blue background when tapping on links & icons on phone*/
-  background: #0E0E0E;
+  font-family: "Montserrat", sans-serif;
 }
 
 *:focus,
@@ -30,10 +29,14 @@ body {
 
 html {
   scroll-behavior: smooth;
-  font-family: "Montserrat", sans-serif;
-
+  
+  font-weight: 300;
+  background: #0E0E0E;
+  
 }
 
 html, body, #root{
   height: 100%;
+  
+  /* because of transation animation, putting it in .app will remove the sticky from placeholder*/
 }

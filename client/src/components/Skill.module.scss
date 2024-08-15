@@ -1,0 +1,50 @@
+
+.skill{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+
+  width: 123px;
+
+  color: #888888;
+  background-color: #1A1A1A;
+
+  border: 1px solid rgb(36, 36, 36);
+  padding: 35px 0px 30px 0px;
+
+  border-radius: 30px;
+  font-weight: 400;
+
+  margin-right: 20px;
+
+  transition: transform 0.3s ease-in-out, border 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out; 
+
+  .test{
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .test2{
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  img{
+    position: absolute;
+
+  }
+
+  >div{
+    margin-top: 90px;
+  }
+
+
+  &:hover{
+    transform: translateY(-10%);
+    border: 1px solid #7c3b3b;
+    background: #1E1414;
+    color: #BB5858;
+    
+  }
+
+}

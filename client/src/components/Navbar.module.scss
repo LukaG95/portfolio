@@ -1,0 +1,24 @@
+.filters{
+  position: sticky;
+  top: 100px;
+}
+
+
+.navi{
+  position: sticky;
+
+  display: flex;
+  flex-direction: column;
+
+  top: 410px;
+  
+  padding: 8px 7px;
+
+  border: 1px solid #4b4b4b;
+  border-radius: 50px;
+
+  :last-child{
+    margin-bottom: 0px !important;
+  }
+
+}

@@ -1,0 +1,32 @@
+
+.navi-background{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 33px;
+  width: 33px;
+
+  border-radius: 50px;
+  
+  margin-bottom: 15px;
+
+  cursor: pointer;
+
+  transition: background 0.25s ease; 
+
+  &:hover{
+    background: #462020;
+  }
+
+  &:active{
+    background: #532626;
+  }
+
+  img{
+    display: block; // fixes some sort of padding below the image
+    filter: invert(65%);
+
+    transition: filter 0.75s ease; 
+  }
+}
