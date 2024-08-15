@@ -51,10 +51,14 @@ function App() {
   const [websiteOption, setWebsiteOption] = useState(website_options[0]);
 
   useEffect(() => {
-    setTimeout(()=> setShowWebsite(true), 2500);    
+    setTimeout(()=> {
+      setShowWebsite(true);
+      
+    }, 2500);    
   }, [])
 
   useEffect(() => {
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -79,7 +83,8 @@ function App() {
         observer.unobserve(div);
       });
     };
-  }, []);
+    
+  }, [showWebsite]);
 
   useEffect(() => {
     const handleScroll = () => {
