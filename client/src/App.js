@@ -9,6 +9,7 @@ import PriceBlock from './components/PriceBlock.js';
 import FormItem from './components/FormItem.js';
 import Navbar from './components/Navbar.js';
 import FilterItem from './components/FilterItem.js';
+import useWindowDimensions from './WindowDimensions.js';
 
 import ReactLogo from './images/react.png'; 
 import ReactRedLogo from './images/react red.png'; 
@@ -38,9 +39,10 @@ import AdvancedWebsite from './images/advanced website.png';
 import WebApp from './images/web app.png'; 
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
+  const { s_width, s_height } = useWindowDimensions();
 
   const website_options = [
     { value: "Simple website" },
@@ -56,6 +58,7 @@ function App() {
       
     }, 2500);    
   }, [])
+
 
   useEffect(() => {
     
@@ -86,6 +89,7 @@ function App() {
     
   }, [showWebsite]);
 
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -123,6 +127,8 @@ function App() {
   if (showWebsite)
   return (
     <div className={styles.app}>
+      <div className={styles.dimensions}>{s_width}</div>
+      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div>
       <div className={styles.left}>
         <div className={styles.placeholder}>
           <div className={styles.top}>
@@ -158,37 +164,37 @@ function App() {
               imageSrc={ReactLogo}
               imageHoverSrc={ReactRedLogo}
               name="ReactJS"
-              width="60px"
+              width={s_width <= 1680 && s_width > 1130 ? "40px" : "60px"}
             />
             <Skill
               imageSrc={NodeLogo}
               imageHoverSrc={NodeRedLogo}
               name="NodeJS"
-              width="50px"
+              width={s_width <= 1680 && s_width > 1130 ? "34px" : "50px"}
             />
             <Skill
               imageSrc={FigmaLogo}
               imageHoverSrc={FigmaRedLogo}
               name="Figma"
-              width="40px"
+              width={s_width <= 1680 && s_width > 1130 ? "25px" : "40px"}
             />
             <Skill
               imageSrc={MongoDBLogo}
               imageHoverSrc={MongoDBRedLogo}
               name="MongoDB"
-              width="47px"
+              width={s_width <= 1680 && s_width > 1130 ? "30px" : "47px"}
             />
             <Skill
               imageSrc={HerokuLogo}
               imageHoverSrc={HerokuRedLogo}
               name="Heroku"
-              width="51px"
+              width={s_width <= 1680 && s_width > 1130 ? "35px" : "51px"}
             />
             <Skill
               imageSrc={GithubLogo}
               imageHoverSrc={GithubRedLogo}
               name="Github"
-              width="56px"
+              width={s_width <= 1680 && s_width > 1130 ? "40px" : "56px"}
             />
           </div>
         </div>
@@ -227,7 +233,7 @@ function App() {
           </div>
         </div>
         <div className={styles.three} id="three">
-          <div className={`${styles.hidden} fade-in-div`}>
+          <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
             <PriceBlock 
               title={"SIMPLE WEBSITE"}
               price={100}
