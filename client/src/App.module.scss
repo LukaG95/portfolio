@@ -1,7 +1,7 @@
 .app{
   display: flex;
-  position: relative;
 
+  position: relative;
 }
 
 .left{
@@ -182,14 +182,20 @@
 }
 
 .middle{
-  color: white;
+  color: #f6f6f6;
+  width: 100%;
 
   .one, .two, .three, .four{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
     background: #131313;
     border-bottom: 1px solid #2B2B2B;
 
-    padding-left: 240px;
-    padding-bottom: 120px;
+    padding: 0px 20px 120px 20px;
+
   }
 
   .one{
@@ -201,6 +207,9 @@
       line-height: 112%;
       letter-spacing: -2.5px;
       font-weight: 280;
+
+      width: 850px;
+
 
       span{
         color: #BB5858;
@@ -218,13 +227,16 @@
       align-items: center;
 
       padding: 50px 5px;
+      width: 850px;
     }
 
     .skills-wrapper{
       display: flex;
+      justify-content: space-between;
 
       margin-top: 125px;
 
+      width: 850px;
     }
   }
 
@@ -244,6 +256,8 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 100%;
       gap: 30px; 
+
+      width: 850px;
 
       transition: opacity 1.5s ease, transform 0.75s ease;
       
@@ -327,6 +341,12 @@
     >div{
       transition: opacity 1.5s ease, transform 0.75s ease;
       display: flex;
+
+      width: 850px;
+
+      :last-child{
+        margin-right: 0px;
+      }
     }
   }
 
@@ -337,6 +357,8 @@
     form{
       width: 750px;
       transition: opacity 1.5s ease, transform 0.75s ease;
+      
+      width: 850px;
 
       >div{
         display: flex;

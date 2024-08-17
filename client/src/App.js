@@ -65,14 +65,14 @@ function App() {
           if (entry.isIntersecting) {
             entry.target.classList.add(styles.visible);
             entry.target.classList.remove(styles.hidden);
-            observer.unobserve(entry.target); // Unobserve after fading in
+            observer.unobserve(entry.target); 
           }
         });
       },
-      { threshold: 0.01 } // Trigger when 10% of each div is visible
+      { threshold: 0.01 } 
     );
 
-    const elements = document.querySelectorAll('.fade-in-div'); // Select all divs with the class
+    const elements = document.querySelectorAll('.fade-in-div'); 
 
     elements.forEach(div => {
       observer.observe(div);
