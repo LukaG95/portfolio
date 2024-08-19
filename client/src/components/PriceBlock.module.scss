@@ -1,7 +1,7 @@
 .price-block{
   position: relative;
 
-  height: 512px;
+  height: 612px;
 
   border: 1px solid #2B2B2B;
   border-radius: 15px;
@@ -11,6 +11,8 @@
   transition: border 0.35s ease;
 
   cursor: pointer;
+  max-width: 400px;
+  flex: 1 1 300px;
 
   .title, .benefits, .price{
     color: #F6F6F6;
@@ -26,11 +28,12 @@
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
 
   .benefits{
     font-size: 13px;
+    text-align: center;
 
     p{
       font-weight: 400;
@@ -78,4 +81,14 @@
     }
   }
 
+}
+
+
+
+
+@media (max-width: 1130px) {
+  .price-block{
+    margin-bottom: 50px;
+
+  }
 }

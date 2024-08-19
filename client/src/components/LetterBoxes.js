@@ -53,14 +53,14 @@ function LetterBoxes() {
   }, []);
 
   return (
-    <>
+    <div className={styles["letterbox-wrapper"]}>
       {letters.map((letter, index) => (
         <div key={index} className={styles.letterBox}>
           <div>{letter}</div>
           <div></div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

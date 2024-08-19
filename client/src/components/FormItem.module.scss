@@ -2,6 +2,7 @@
   position: relative;
   height: fit-content;
 
+  width: 100%;
 
   :nth-of-type(2){
     font-size: 12px;
@@ -66,4 +67,22 @@
   }
 
 }
+
+@media (max-width: 1130px) {
+  .form-item{
+    margin-bottom: 60px;
+  }
+
+  .form-item input{
+    width: 220px;
+  }
+
+
+  .form-item textarea{
+
+    width: 100%;
+  }
+
+}
+
 

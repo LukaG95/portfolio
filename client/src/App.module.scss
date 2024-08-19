@@ -355,7 +355,7 @@
       display: grid;
 
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
+      gap: 20px;
 
       width: 850px;
 
@@ -384,11 +384,12 @@
         align-items: end;
 
         margin-bottom: 95px;
-
+      
       }
 
       >div:nth-of-type(2){
-        height: 52px
+        height: 52px;
+        
       }
 
       button{
@@ -611,17 +612,62 @@
   }
 
   .middle .one .middle-text {
+    flex-direction: column;
     justify-content: center;
-    padding: 100px 0px;
+    padding: 50px 0px;
+    width: 100%;
+
   }
 
   .middle .one .skills-wrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 25px;
+
+    padding: 0px 30px;
 
     width: 100%;
 
     margin-top: 0px;
+
+  }
+
+  .middle .two .work-wrapper{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 800px));
+    width: auto;
+  
+    :nth-child(3){
+      grid-column: span 1;
+    }
+  }
+
+  .middle .three .price-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    flex-wrap: wrap;
+
+  }
+
+  .middle .four form{
+    width: 100%;
+    border: 1px solid red;
+
+    >div{
+      flex-direction: column;
+
+      height: "fit-content";
+      margin-bottom: 0px;
+
+    }
+
+    >div:nth-of-type(2){
+      height: auto;
+   
+      align-items: start;
+      margin-bottom: 30px;
+    }
   }
 }

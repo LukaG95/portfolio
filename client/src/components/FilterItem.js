@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from './FilterItem.module.scss';
+import useWindowDimensions from '../WindowDimensions.js';
 
 const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, moreLength }) => {
   const [open, setOpen] = useState(false);
+  const { s_width, s_height } = useWindowDimensions();
 
   const displayDropdown = () => {
     return options
@@ -33,7 +35,7 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
         borderRadius: moreLength && "15px",
         marginBottom: !moreLength && "10px",
         color: moreLength && "#f6f6f6",
-        position: moreLength && "absolute",
+        position: moreLength && s_width > 1310 ? "absolute" : "relative",
         right: moreLength && "0px",
         top: moreLength && "-14px",
        

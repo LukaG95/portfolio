@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import styles from './FormItem.module.scss';
 
+
 function FormItem({ placeholder, type="input", placeholder2 }) {
   const [selected, setSelected] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -18,7 +19,7 @@ function FormItem({ placeholder, type="input", placeholder2 }) {
   };
 
   return (
-    <div className={styles["form-item"]}>
+    <div className={styles["form-item"]} style={{width: type !== "input" && "100%"}}>
       {
         type === "input" ? 
           <>

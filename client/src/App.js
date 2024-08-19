@@ -39,7 +39,7 @@ import AdvancedWebsite from './images/advanced website.png';
 import WebApp from './images/web app.png'; 
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(true);
+  const [showWebsite, setShowWebsite] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
@@ -158,7 +158,7 @@ function App() {
       <div className={styles.middle}>
         <div className={styles.one} id="one">
           <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span> I'm a <span>full-stack</span> developer</div>
-          <div className={styles["middle-text"]}>I love creating&nbsp;<LetterBoxes />&nbsp;websites</div>
+          <div className={styles["middle-text"]}><div>I love creating&nbsp;</div><LetterBoxes /><div>&nbsp;websites</div></div>
           <div className={styles["skills-wrapper"]}>
             <Skill
               imageSrc={ReactLogo}
