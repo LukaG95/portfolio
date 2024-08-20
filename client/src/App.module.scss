@@ -74,11 +74,10 @@
       img{
         position: absolute;
 
-        top: 7px;
-        right: 55px;
+        top: -5px;
+        right: 40px;
 
-        width: 83.75px;
-        height: 93.23px;
+        width: 70px;
 
         opacity: 0.1;
 
@@ -593,14 +592,14 @@
 
   .left .placeholder{
 
-    padding: 35px;
+    padding: 25px;
   }
 
   .middle .one, .middle .two, .middle .three, .middle .four {
     border-bottom: 1px solid #2B2B2B;
 
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 35px;
+    padding-right: 35px;
 
   }
 
@@ -622,8 +621,8 @@
 
   .middle .one .skills-wrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+    gap: 15px;
 
     padding: 0px 20px;
 
@@ -636,7 +635,7 @@
   .middle .two .work-wrapper{
     grid-template-columns: repeat(auto-fit, minmax(200px, 800px));
     width: auto;
-  
+
     :nth-child(3){
       grid-column: span 1;
     }

@@ -127,8 +127,8 @@ function App() {
   if (showWebsite)
   return (
     <div className={styles.app}>
-      <div className={styles.dimensions}>{s_width}</div>
-      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div>
+      {/* <div className={styles.dimensions}>{s_width}</div>
+      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div> */}
       <div className={styles.left}>
         <div className={styles.placeholder}>
           <div className={styles.top}>
