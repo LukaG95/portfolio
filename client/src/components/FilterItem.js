@@ -31,7 +31,7 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
       className={`${styles.filter} ${moreLength && styles["reduce-width"]}`} 
       style={{
         height: (open && !moreLength) ? `${(options.length - 1) * 45 + 49}px` : (open && moreLength) ? `${(options.length - 1) * 64 + 59}px` : moreLength ? "65px" : undefined,
-        width: moreLength && "260px",
+        width: moreLength && s_width <= 1130 ? "100%" : moreLength && "260px",
         borderRadius: moreLength && "15px",
         marginBottom: !moreLength && "10px",
         color: moreLength && "#f6f6f6",

@@ -37,7 +37,7 @@ function FormItem({ placeholder, type="input", placeholder2 }) {
 
          <>
             <label htmlFor={placeholder} style={selected || inputValue.trim() !== '' ? {top: "-25px", left: "25px", fontSize: "12px"} : {top: "25px", left: "25px"}}>{placeholder}</label>
-            <label htmlFor={placeholder} style={selected || inputValue.trim() !== '' ? {display: "none"} : {top: "55px", left: "25px"}}>{placeholder2}</label>
+            <label htmlFor={placeholder} style={selected || inputValue.trim() !== '' ? {display: "none"} : {top: "55px", left: "25px", paddingRight: "20px"}}>{placeholder2}</label>
             <textarea
               id={placeholder}
               name={placeholder}

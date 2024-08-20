@@ -592,7 +592,8 @@
   }
 
   .left .placeholder{
-    border: none;
+
+    padding: 35px;
   }
 
   .middle .one, .middle .two, .middle .three, .middle .four {
@@ -624,7 +625,7 @@
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 25px;
 
-    padding: 0px 30px;
+    padding: 0px 20px;
 
     width: 100%;
 
@@ -653,7 +654,6 @@
 
   .middle .four form{
     width: 100%;
-    border: 1px solid red;
 
     >div{
       flex-direction: column;
