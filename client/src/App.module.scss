@@ -588,6 +588,11 @@
     padding-bottom: 20px;
 
     border-bottom: 1px solid #2B2B2B;
+    animation: appearFromTop 1s ease, appear 1s ease;
+  }
+
+  .middle{
+    animation: appearFromBottom 1s ease, appear 1s ease;
   }
 
   .left .placeholder{
@@ -667,5 +672,15 @@
       align-items: start;
       margin-bottom: 30px;
     }
+
+   
+  }
+
+}
+
+
+@media (max-width: 500px) {
+  .four form button{
+    width: 100%;
   }
 }

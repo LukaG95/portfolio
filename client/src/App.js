@@ -39,7 +39,7 @@ import AdvancedWebsite from './images/advanced website.png';
 import WebApp from './images/web app.png'; 
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(true);
+  const [showWebsite, setShowWebsite] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
