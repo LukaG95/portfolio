@@ -591,15 +591,15 @@
   }
 
   .left .placeholder{
-
+    border: none;
     padding: 25px;
   }
 
   .middle .one, .middle .two, .middle .three, .middle .four {
     border-bottom: 1px solid #2B2B2B;
 
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-left: 25px;
+    padding-right: 25px;
 
   }
 
@@ -620,11 +620,10 @@
   }
 
   .middle .one .skills-wrapper{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
-
-    padding: 0px 20px;
 
     width: 100%;
 
