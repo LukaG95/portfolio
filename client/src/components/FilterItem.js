@@ -33,7 +33,7 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
         height: (open && !moreLength) ? `${(options.length - 1) * 45 + 49}px` : (open && moreLength) ? `${(options.length - 1) * 64 + 59}px` : moreLength ? "65px" : undefined,
         width: moreLength && s_width <= 1130 ? "100%" : moreLength && "260px",
         borderRadius: moreLength && "15px",
-        marginBottom: !moreLength && "10px",
+        marginBottom: s_width <= 1130 ? "0px" : !moreLength && "10px",
         color: moreLength && "#f6f6f6",
         position: moreLength && s_width > 1310 ? "absolute" : "relative",
         right: moreLength && "0px",

@@ -30,3 +30,11 @@
     transition: filter 0.75s ease; 
   }
 }
+
+
+@media (max-width: 1130px) {
+  .navi-background{ 
+    margin-bottom: 0px !important;
+    margin-right: 15px;
+  }
+}

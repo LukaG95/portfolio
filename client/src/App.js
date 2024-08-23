@@ -39,10 +39,10 @@ import AdvancedWebsite from './images/advanced website.png';
 import WebApp from './images/web app.png'; 
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
-  const { s_width, s_height } = useWindowDimensions();
+  const { s_width } = useWindowDimensions();
 
   const website_options = [
     { value: "Simple website" },
@@ -51,6 +51,7 @@ function App() {
   ];
 
   const [websiteOption, setWebsiteOption] = useState(website_options[0]);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     setTimeout(()=> {
@@ -127,6 +128,9 @@ function App() {
   if (showWebsite)
   return (
     <div className={styles.app}>
+      <div className={`${styles.sidebar} ${showSidebar && styles.open}`}>
+        <button onClick={() => setShowSidebar(false)}>close</button>
+      </div>
       {/* <div className={styles.dimensions}>{s_width}</div>
       <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div> */}
       <div className={styles.left}>
@@ -279,7 +283,7 @@ function App() {
         </div>
       </div>
       <div className={styles.right}>
-        <Navbar selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/>
+        <Navbar selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} setShowSidebar={setShowSidebar}/>
       </div>
     </div>
   );

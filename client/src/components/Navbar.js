@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './Navbar.module.scss';
 import NavItem from './NavItem.js';
 import FilterItem from './FilterItem.js';
+import useWindowDimensions from '../WindowDimensions.js';
 
 import User from '../images/user.png';
 import Work from '../images/work.png';
@@ -12,7 +13,7 @@ import PaintRed from '../images/paint red.png';
 import PaintGreen from '../images/paint green.png';
 import PaintBlue from '../images/paint blue.png';
 
-function Navbar({ selectedIndex, setSelectedIndex }) {
+function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
 
   const languages = [
     { value: "SLO" },
@@ -26,6 +27,7 @@ function Navbar({ selectedIndex, setSelectedIndex }) {
 
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [language, setLanguage] = useState(languages[1]);
+  const { s_width } = useWindowDimensions();
 
   const handleNavItemClick = (index, id) => {
     setSelectedIndex(index);
@@ -42,19 +44,32 @@ function Navbar({ selectedIndex, setSelectedIndex }) {
     <>
       <div className={styles.filters}>
 
-      <FilterItem 
-        options={languages} 
-        currentOption={language} 
-        onOptionChange={setLanguage}
-        isImageOption={false}
-      />
 
-      <FilterItem 
-        options={colors} 
-        currentOption={selectedColor} 
-        onOptionChange={setSelectedColor}
-        isImageOption={true}
-      />
+      {
+        s_width > 1130 ? 
+          <>
+            <FilterItem 
+              options={languages} 
+              currentOption={language} 
+              onOptionChange={setLanguage}
+              isImageOption={false}
+            />
+
+            <FilterItem 
+              options={colors} 
+              currentOption={selectedColor} 
+              onOptionChange={setSelectedColor}
+              isImageOption={true}
+            />
+          </>
+           : 
+          <div className={styles["open-sidebar-button"]} onClick={()=> { setShowSidebar(prev => !prev) }} >
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+      }
+      
 
       </div>
 
