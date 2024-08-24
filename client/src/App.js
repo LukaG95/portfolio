@@ -1,5 +1,5 @@
 import styles from './App.module.scss';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import Loader from './components/Loader.js';
 import Profile from './images/profile.png'; 
 import Logo from './images/logo.png'; 
@@ -10,6 +10,7 @@ import FormItem from './components/FormItem.js';
 import Navbar from './components/Navbar.js';
 import FilterItem from './components/FilterItem.js';
 import useWindowDimensions from './WindowDimensions.js';
+import { info } from './misc/info.js';
 
 import ReactLogo from './images/react.png'; 
 import ReactRedLogo from './images/react red.png'; 
@@ -37,12 +38,14 @@ import Facebook from './images/facebook.png';
 import SimpleWebsite from './images/simple website.png'; 
 import AdvancedWebsite from './images/advanced website.png';
 import WebApp from './images/web app.png'; 
+import { AppContext } from './context/AppContext';
 
 function App() {
   const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
   const { s_width } = useWindowDimensions();
+  const { languages, colors } = info();
 
   const website_options = [
     { value: "Simple website" },
@@ -60,6 +63,13 @@ function App() {
     }, 2500);    
   }, [])
 
+  useEffect(() => {
+    if (showSidebar) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [showSidebar]);
 
   useEffect(() => {
     
@@ -108,7 +118,6 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -125,11 +134,41 @@ function App() {
     else console.log("no element")
   };
 
+  const { language, setLanguage, selectedColor, setSelectedColor } = useContext(AppContext);
+
   if (showWebsite)
   return (
     <div className={styles.app}>
-      <div className={`${styles.sidebar} ${showSidebar && styles.open}`}>
-        <button onClick={() => setShowSidebar(false)}>close</button>
+      <div className={`${styles["sidebar-wrapper"]} ${showSidebar && styles.open}`}>
+
+        <div className={styles.sidebar}>
+
+          <div className={styles["close-sidebar-wrapper"]}>
+            <div className={styles["close-sidebar-button"]} onClick={() => setShowSidebar(false)}>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+          <div className={styles["sidebar-filters-wrapper"]}>
+
+            <FilterItem 
+              options={languages} 
+              currentOption={language} 
+              onOptionChange={setLanguage}
+              isImageOption={false}
+            />
+
+            <FilterItem 
+              options={colors} 
+              currentOption={selectedColor} 
+              onOptionChange={setSelectedColor}
+              isImageOption={true}
+            />
+
+          </div>
+           
+        </div>
       </div>
       {/* <div className={styles.dimensions}>{s_width}</div>
       <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div> */}

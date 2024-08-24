@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './Navbar.module.scss';
 import NavItem from './NavItem.js';
 import FilterItem from './FilterItem.js';
@@ -8,26 +8,12 @@ import User from '../images/user.png';
 import Work from '../images/work.png';
 import Pricing from '../images/pricing.png';
 import Email from '../images/email.png';
-
-import PaintRed from '../images/paint red.png';
-import PaintGreen from '../images/paint green.png';
-import PaintBlue from '../images/paint blue.png';
+import { info } from '../misc/info.js';
+import { AppContext } from '../context/AppContext';
 
 function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
-
-  const languages = [
-    { value: "SLO" },
-    { value: "ENG" }
-  ];
-  const colors = [
-    { value: "red", src: PaintRed },
-    { value: "green", src: PaintGreen },
-    { value: "blue", src: PaintBlue },
-  ];
-
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const [language, setLanguage] = useState(languages[1]);
   const { s_width } = useWindowDimensions();
+  const { languages, colors } = info();
 
   const handleNavItemClick = (index, id) => {
     setSelectedIndex(index);
@@ -40,10 +26,11 @@ function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
     else console.log("no element")
   };
 
+  const { language, setLanguage, selectedColor, setSelectedColor } = useContext(AppContext);
+
   return (
     <>
       <div className={styles.filters}>
-
 
       {
         s_width > 1130 ? 
