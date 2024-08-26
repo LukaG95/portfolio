@@ -370,13 +370,16 @@
     padding-bottom: 80px;
 
     border-bottom: none; // leave this
-
+ 
     form{
       transition: opacity 1.5s ease, transform 0.75s ease;
       
       width: 850px;
 
+
+
       >div{
+       
         display: flex;
         position: relative;
 
