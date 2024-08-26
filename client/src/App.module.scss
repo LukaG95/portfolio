@@ -290,7 +290,7 @@
         height: fit-content;
         width: 100%;
 
-        .work_upper{
+        .work-upper{
           display: flex;
 
           justify-content: space-between;
@@ -309,30 +309,6 @@
             font-weight: 400;
           }
 
-          button{
-            background: #BB5858;
-
-            height: 30px;
-            width: 132px;
-
-            border: none;
-            border-radius: 5px;
-
-            color: #e6e6e6;
-            font-size: 13px;
-            font-weight: 700;
-
-            cursor: pointer;
-            
-            &:hover{
-              background: #c45c5c;
-            }
-      
-            &:active{
-              background: #ca5f5f;
-            }
-          }
-
         }
 
         img {
@@ -340,6 +316,31 @@
 
           max-width: 100%;
           max-height: 100%;
+        }
+      }
+
+      
+      .preview-button{
+        background: #BB5858;
+
+        height: 30px;
+        width: 132px;
+
+        border: none;
+        border-radius: 5px;
+
+        color: #e6e6e6;
+        font-size: 13px;
+        font-weight: 700;
+
+        cursor: pointer;
+        
+        &:hover{
+          background: #c45c5c;
+        }
+  
+        &:active{
+          background: #ca5f5f;
         }
       }
     }
@@ -726,8 +727,28 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 800px));
     width: auto;
 
+    .work-block{
+      padding: 20px;
+    }
+
     :nth-child(3){
       grid-column: span 1;
+    }
+
+    .work-block .work-upper{
+      margin-bottom: 20px;
+
+      div :nth-child(1){
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      div :nth-child(2){
+        color: #777777;
+        font-size: 12px;
+        font-weight: 400;
+      }
+
     }
   }
 

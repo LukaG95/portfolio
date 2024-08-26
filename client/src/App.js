@@ -55,39 +55,7 @@ function App() {
 
   const [websiteOption, setWebsiteOption] = useState(website_options[0]);
   const [showSidebar, setShowSidebar] = useState(false);
-
-  useEffect(() => {
-    let touchStartX = 0;
-    let touchEndX = 0;
   
-    const handleTouchStart = (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    };
-  
-    const handleTouchMove = (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-    };
-  
-    const handleTouchEnd = () => {
-      if (touchEndX > touchStartX && touchEndX - touchStartX > 50) { 
-        setShowSidebar(true);
-      } else if (touchEndX < touchStartX && touchStartX - touchEndX > 50) {
-        setShowSidebar(false);
-      }
-    };
-  
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
-  
-    return () => {
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
-  
-
   useEffect(() => {
     setTimeout(()=> {
       setShowWebsite(true);
@@ -290,34 +258,38 @@ function App() {
         <div className={styles.two} ref={divRef} id="two">
           <div className={`${styles["work-wrapper"]} ${styles.hidden} fade-in-div`}>
             <div className={styles["work-block"]}>
-              <div className={styles["work_upper"]}>
+              <div className={styles["work-upper"]}>
                 <div>
                   <p>Simple website</p>
                   <p>Save on flight tickets</p>
                 </div>
-                <button>Preview</button>
+                { s_width > 1310 && <button className={styles["preview-button"]}>Preview</button>}
               </div>
               <img src={SimpleWebsite}></img>
+
+              { s_width <= 1310 && <button style={{marginTop: "20px", width: "100%", borderRadius: "9px", height: "40px"}} className={styles["preview-button"]}>Preview</button>}
             </div>
             <div className={styles["work-block"]}>
-            <div className={styles["work_upper"]}>
+            <div className={styles["work-upper"]}>
                 <div>
                   <p>Advanced website</p>
                   <p>Designer portfolio</p>
                 </div>
-                <button>Preview</button>
+                { s_width >= 1310 && <button className={styles["preview-button"]}>Preview</button>}
               </div>
               <img src={AdvancedWebsite}></img>
+              { s_width <= 1310 && <button style={{marginTop: "20px", width: "100%", borderRadius: "9px", height: "40px"}} className={styles["preview-button"]}>Preview</button>}
             </div>
             <div className={styles["work-block"]}>
-            <div className={styles["work_upper"]}>
+            <div className={styles["work-upper"]}>
                 <div>
                   <p>Web app</p>
                   <p>PC part picker</p>
                 </div>
-                <button>Preview</button>
+                { s_width >= 1310 && <button className={styles["preview-button"]}>Preview</button>}
               </div>
               <img src={WebApp}></img>
+              { s_width <= 1310 && <button style={{marginTop: "20px", width: "100%", borderRadius: "9px", height: "40px"}} className={styles["preview-button"]}>Preview</button>}
             </div>
           </div>
         </div>
