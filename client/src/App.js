@@ -57,6 +57,38 @@ function App() {
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+  
+    const handleTouchStart = (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    };
+  
+    const handleTouchMove = (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+    };
+  
+    const handleTouchEnd = () => {
+      if (touchEndX > touchStartX && touchEndX - touchStartX > 50) { 
+        setShowSidebar(true);
+      } else if (touchEndX < touchStartX && touchStartX - touchEndX > 50) {
+        setShowSidebar(false);
+      }
+    };
+  
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+  
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
+  
+
+  useEffect(() => {
     setTimeout(()=> {
       setShowWebsite(true);
       
