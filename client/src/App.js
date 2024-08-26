@@ -44,7 +44,7 @@ function App() {
   const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
-  const { s_width } = useWindowDimensions();
+  const { s_width, s_height } = useWindowDimensions();
   const { languages, colors } = info();
 
   const website_options = [
@@ -105,14 +105,28 @@ function App() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
 
-      if (scrollPosition < 500) {
-        setSelectedIndex(0);
-      } else if (scrollPosition >= 500 && scrollPosition < 1800) {
-        setSelectedIndex(1);
-      } else if (scrollPosition >= 1800 && scrollPosition < 2600) {
-        setSelectedIndex(2);
-      } else {
-        setSelectedIndex(3);
+      if (s_width <= 1130){
+        if (scrollPosition < 1530) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 1530 && scrollPosition < 2700) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 2700 && scrollPosition < 4950) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      else {
+        if (scrollPosition < 500) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 500 && scrollPosition < 1800) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 1800 && scrollPosition < 2600) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
       }
     };
 

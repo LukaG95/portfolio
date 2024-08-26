@@ -36,5 +36,12 @@
   .navi-background{ 
     margin-bottom: 0px !important;
     margin-right: 15px;
+
+    &:hover{
+      background: none;
+    }
+    &:active{
+      background: none;
+    }
   }
 }

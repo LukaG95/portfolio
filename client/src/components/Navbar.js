@@ -20,7 +20,10 @@ function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
 
     const el = document.querySelector(id);
 
-    if (el) {
+    if (index === 0){
+      window.scrollTo(0, 0);
+    }
+    else if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
     else console.log("no element")
