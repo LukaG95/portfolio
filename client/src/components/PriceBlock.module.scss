@@ -1,85 +1,98 @@
 .price-block{
   position: relative;
 
-  height: 612px;
+  height: 590px;
 
-  border: 1px solid #2B2B2B;
-  border-radius: 15px;
+  border: 1px solid #3f3f3f;
+  border-radius: 25px;
 
-  padding: 40px 35px;
+  padding: 40px 45px;
 
   transition: border 0.35s ease;
 
   cursor: pointer;
-  max-width: 400px;
-  flex: 1 1 300px;
+  width: auto;
 
   .title, .benefits, .price{
     color: #F6F6F6;
-    opacity: 0.5;
   }
 
   .title{
     display: flex;
 
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
+
+    align-items: center;
+    justify-content: start;
+
+    margin-left: -45px;
+    margin-right: -45px;
+    margin-top: -40px;
+
+    padding: 30px 50px;
+
+    border-radius: 25px 25px 0px 0px;
+
+  }
+
+  .price-per-hour{
+    font-size: 20px;
+    font-weight: 400;
+
+    color: #707070;
+    padding: 20px 0px;
+
+    border-bottom: 1px solid #3f3f3f;
+  }
+
+  .benefits{
+    font-size: 14px;
+    padding: 50px 0px;
+
+    height: 320px;
+
+    p{
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+  }
+
+  .choose{
+    display: flex;
 
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 60px;
-  }
+    background: #BB5858;
 
-  .benefits{
-    font-size: 13px;
-    text-align: center;
+    padding: 10px;
 
-    p{
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
-  }
+    font-weight: 600;
+    font-size: 16px;
 
-  .price{
-    position: absolute;
-    display: flex;
-    justify-content: center;
+    border-bottom: 5px solid #AA4C4C;
+    border-radius: 15px;
 
     width: 100%;
+    max-width: 500px;
 
-    bottom: 40px;
-    left: 0px;
+    letter-spacing: 0.2px;
 
-    font-size: 12px;
-  }
+    cursor: pointer;
+    user-select: none;
 
-  .button-wrapper{
-    position: absolute;
-    display: flex;
-    justify-content: center;
+    &:hover{
+      background: #c45c5c;
+    }
 
-    width: 100%;
-
-    bottom: -18px;
-    left: 0px;
-
-    button{
-      background: #BB5858;
-      color: #f6f6f6;
-
-      border-radius: 10px;
-
-      padding: 10px 50px;
-
-      font-size: 15px;
-      font-weight: 800;
-      border: 1px solid #BB5858;
-      cursor: pointer;
-
-      transition: background 0.35s ease, border 0.35s ease;
+    &:active{
+      background: #ca5f5f;
+      padding: 12.5px;
+      border-bottom: none;
     }
   }
+  
 
 }
 

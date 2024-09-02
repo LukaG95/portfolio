@@ -41,16 +41,84 @@ import WebApp from './images/web app.png';
 import { AppContext } from './context/AppContext';
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
   const { languages, colors } = info();
 
+  const skills = [{
+      logo: ReactLogo,
+      name: "ReactJS",
+      width: "60px"
+    },{
+      logo: NodeLogo,
+      name: "NodeJS",
+      width: "55px"
+    },
+    ,{
+      logo: GithubLogo,
+      name: "Github",
+      width: "55px"
+    },
+    {
+      logo: MongoDBLogo,
+      name: "MongoDB",
+      width: "48px",
+      padding: "5px",
+      margin: "8px"
+    },{
+      logo: HerokuLogo,
+      name: "Heroku",
+      width: "46px",
+      padding: "5px",
+      margin: "5px"
+    }, {
+      logo: FigmaLogo,
+      name: "Figma",
+      width: "38px",
+      padding: "10px",
+      margin: "9px"
+    }
+  ]
+
+  const words = ['fast', 'modern', 'beautiful', 'timeless', 'secure', 'dynamic', 'unique', 'edgy'];
+  const random_num = Math.floor(Math.random() * (words.length-1)) + 1;
+  const [usedWords, setUsedWords] = useState([words[random_num]]);
+  const [currentWord, setCurrentWord] = useState(words[random_num]);
+  const innerDivRef = useRef(null);
+
+  useEffect(() => {
+    function updateWord() {
+      let filtered_words = words.filter(word => !usedWords.includes(word))
+      
+      if (usedWords.length >= words.length) {
+        filtered_words = words;
+        setUsedWords([]);
+      }
+
+      const final_word = filtered_words[Math.floor(Math.random() * filtered_words.length)]; // Pick a random word
+      setUsedWords(prev => [...prev, final_word]);
+      setCurrentWord(final_word);
+    }
+
+    function handleAnimationIteration() {
+      updateWord();
+    }
+
+    const innerDiv = innerDivRef.current;
+    if (innerDiv) {
+      innerDiv.addEventListener('animationiteration', handleAnimationIteration);
+
+      return () => {
+        innerDiv.removeEventListener('animationiteration', handleAnimationIteration);
+      };
+    }
+  }, [words]);
+
   const website_options = [
-    { value: "Simple website" },
-    { value: "Advanced website" },
-    { value: "Web app" },
+    { value: "Basic" },
+    { value: "Enterprise" },
   ];
 
   const [websiteOption, setWebsiteOption] = useState(website_options[0]);
@@ -72,32 +140,35 @@ function App() {
   }, [showSidebar]);
 
   useEffect(() => {
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-            entry.target.classList.remove(styles.hidden);
-            observer.unobserve(entry.target); 
+            // Find the .fade-in-div elements inside the observed .content element
+            const fadeInDivs = entry.target.querySelectorAll('.fade-in-div');
+            fadeInDivs.forEach(fadeInDiv => {
+              fadeInDiv.classList.add(styles.visible);
+              fadeInDiv.classList.remove(styles.hidden);
+            });
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.01 } 
+      { threshold: 0.10 } 
     );
-
-    const elements = document.querySelectorAll('.fade-in-div'); 
-
+  
+    // Observe all elements with class .content
+    const elements = document.querySelectorAll('.observed');
+  
     elements.forEach(div => {
       observer.observe(div);
     });
-
+  
     return () => {
       elements.forEach(div => {
         observer.unobserve(div);
       });
     };
-    
   }, [showWebsite]);
 
   
@@ -215,129 +286,104 @@ function App() {
       </div>
       <div className={styles.middle}>
         <div className={styles.one} id="one">
-          <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span> I'm a <span>full-stack</span> developer</div>
-          <div className={styles["middle-text"]}><div>I love creating&nbsp;</div><LetterBoxes /><div>&nbsp;websites</div></div>
-          <div className={styles["skills-wrapper"]}>
-            <Skill
-              imageSrc={ReactLogo}
-              imageHoverSrc={ReactRedLogo}
-              name="ReactJS"
-              width={s_width <= 1680 && s_width > 1130 ? "40px" : "60px"}
-            />
-            <Skill
-              imageSrc={NodeLogo}
-              imageHoverSrc={NodeRedLogo}
-              name="NodeJS"
-              width={s_width <= 1680 && s_width > 1130 ? "34px" : "50px"}
-            />
-            <Skill
-              imageSrc={FigmaLogo}
-              imageHoverSrc={FigmaRedLogo}
-              name="Figma"
-              width={s_width <= 1680 && s_width > 1130 ? "25px" : "40px"}
-            />
-            <Skill
-              imageSrc={MongoDBLogo}
-              imageHoverSrc={MongoDBRedLogo}
-              name="MongoDB"
-              width={s_width <= 1680 && s_width > 1130 ? "30px" : "47px"}
-            />
-            <Skill
-              imageSrc={HerokuLogo}
-              imageHoverSrc={HerokuRedLogo}
-              name="Heroku"
-              width={s_width <= 1680 && s_width > 1130 ? "35px" : "51px"}
-            />
-            <Skill
-              imageSrc={GithubLogo}
-              imageHoverSrc={GithubRedLogo}
-              name="Github"
-              width={s_width <= 1680 && s_width > 1130 ? "40px" : "56px"}
-            />
+          <div className={styles.content}>
+            <div className={styles["navi-text-on-middle"]}>About me</div>
+            <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span> I'm a <span>full-stack</span> developer</div>
+            <div className={styles["new-skills-outer"]}>
+
+              <div>
+                <div className={styles["random-word"]}>{currentWord.toUpperCase()}</div>
+              </div>
+              
+              <div>
+                <div className={styles["website-text"]}>WEBSITES</div>
+              </div>
+              
+              <div ref={innerDivRef} className={styles["new-skills-inner"]}>
+             
+                {
+                  skills.map(skill => 
+                    <div className={styles["new-skill"]} style={{paddingLeft: skill.padding}}>
+                      <img src={skill.logo} alt={skill.name} style={{width: skill.width}}/>
+                      <div style={{marginLeft: skill.margin}}>{skill.name}</div>
+                    </div>
+                  )
+                }
+                
+              </div>
+            
+            </div>
+
           </div>
         </div>
-        <div className={styles.two} ref={divRef} id="two">
-          <div className={`${styles["work-wrapper"]} ${styles.hidden} fade-in-div`}>
-            <div className={styles["work-block"]}>
-              <div className={styles["work-upper"]}>
-                <div>
-                  <p>Simple website</p>
-                  <p>Save on flight tickets</p>
-                </div>
-                { s_width > 1310 && <button className={styles["preview-button"]}>Preview</button>}
-              </div>
+        <div className={`${styles.two} observed`} ref={divRef} id="two">
+          <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+            <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>Work</div>
+            <div style={{marginBottom: "70px"}}className={styles["new-work-block"]}>
               <img src={SimpleWebsite}></img>
-
-              { s_width <= 1310 && <button style={{marginTop: "20px", width: "100%", borderRadius: "9px", height: "40px"}} className={styles["preview-button"]}>Preview</button>}
+              <div></div>
+              <p className={styles["white-to-black"]}><span style={{color: "#BB5858"}}>Basic</span> website</p>
+              <p className={styles["white-to-black"]}>Grow your business</p>
+              <p><span style={{color: "#BB5858"}}>from</span> <span className={styles["white-to-black"]}>100€</span></p>
+              <div style={{background: "#e0e0e0"}}></div>
             </div>
-            <div className={styles["work-block"]}>
-            <div className={styles["work-upper"]}>
-                <div>
-                  <p>Advanced website</p>
-                  <p>Designer portfolio</p>
-                </div>
-                { s_width >= 1310 && <button className={styles["preview-button"]}>Preview</button>}
-              </div>
-              <img src={AdvancedWebsite}></img>
-              { s_width <= 1310 && <button style={{marginTop: "20px", width: "100%", borderRadius: "9px", height: "40px"}} className={styles["preview-button"]}>Preview</button>}
-            </div>
-            <div className={styles["work-block"]}>
-            <div className={styles["work-upper"]}>
-                <div>
-                  <p>Web app</p>
-                  <p>PC part picker</p>
-                </div>
-                { s_width >= 1310 && <button className={styles["preview-button"]}>Preview</button>}
-              </div>
+            <div className={styles["new-work-block"]}>
               <img src={WebApp}></img>
-              { s_width <= 1310 && <button style={{marginTop: "20px", width: "100%", borderRadius: "9px", height: "40px"}} className={styles["preview-button"]}>Preview</button>}
+              <div></div>
+              <p><span style={{color: "#BB5858"}}>Web</span> app</p>
+              <p>PC part picker</p>
+              <p><span style={{color: "#BB5858"}}>from</span> 1.500€</p>
+              <div></div>
             </div>
           </div>
         </div>
-        <div className={styles.three} id="three">
-          <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
-            <PriceBlock 
-              title={"SIMPLE WEBSITE"}
-              price={100}
-              benefits={["1 design example", "Up to 3 pages", "Standard static pages"]}
-            />
-            <PriceBlock 
-              title={"ADVANCED WEBSITE"}
-              price={500}
-              benefits={["3 design examples", "Up to 5 pages", "Custom pages"]}
-            />
-            <PriceBlock 
-              title={"WEB APP"}
-              price={1500}
-              benefits={["Unlimited design examples", "Unlimited pages", "Custom functionality"]}
-            />
-          </div>
-        </div>
-        <div className={styles.four} id="four">
-          <form className={`${styles.hidden} fade-in-div`}>
-            <div>
-              <FormItem placeholder={"Full name *"}/>
-              <FormItem placeholder={"Email *"}/>
-            </div>
-
-            <div>
-              <FormItem placeholder={"Budget"}/>
-              <FilterItem 
-                options={website_options} 
-                currentOption={websiteOption} 
-                onOptionChange={setWebsiteOption}
-                isImageOption={false}
-                moreLength={true}
+        <div className={`${styles.three} observed`} id="three">
+         <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+           <div style={{marginBottom: "35px"}} className={styles["navi-text-on-middle"]}>Pricing</div>
+            <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
+              <PriceBlock 
+                title={"BASIC"}
+                price={15}
+                benefits={["Require your wireframe", "Using design and code templates"]}
+              />
+              <PriceBlock 
+                title={"ENTERPRISE"}
+                price={25}
+                benefits={["Handcrafted design", "Integrated database and backend", "High priority", "24/7 support"]}
               />
             </div>
+            <p style={{marginTop: "50px", fontWeight: "370"}}>* All plans include <span style={{color: "#E56A6A"}}>responsive</span> design</p>
+            <p style={{marginTop: "10px", fontWeight: "370"}}>* Hosting starts at 5€/month upon request</p>
+          </div>
+        </div>
+        <div className={`${styles.four} observed`} id="four">
+          <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+            <div style={{marginBottom: "80px"}} className={styles["navi-text-on-middle"]}>Contact</div>
+            <form className={`${styles.hidden} fade-in-div`}>
+              <div>
+                <FormItem placeholder={"Full name *"}/>
+                <FormItem placeholder={"Email *"}/>
+              </div>
 
-            <div>
-              <FormItem type={"textarea"} placeholder={"Message *"} placeholder2={"optional: include website examples in the message"} />
-            </div>
+              <div>
+                <FormItem placeholder={"Budget"}/>
+                <FilterItem 
+                  options={website_options} 
+                  currentOption={websiteOption} 
+                  onOptionChange={setWebsiteOption}
+                  isImageOption={false}
+                  moreLength={true}
+                />
+              </div>
 
-            <button type='Submit' onClick={submitMessage} style={{opacity: !isFormFilled() && 0.5}} disabled={!isFormFilled()}>Send message</button>
+              <div>
+                <FormItem type={"textarea"} placeholder={"Message *"} placeholder2={"optional: include website examples in the message"} />
+              </div>
 
-          </form>
+              <button type='Submit' onClick={submitMessage} style={{opacity: !isFormFilled() && 0.5}} disabled={!isFormFilled()}>Send message</button>
+
+            </form>
+          </div>
         </div>
       </div>
       <div className={styles.right}>

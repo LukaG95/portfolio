@@ -3,7 +3,8 @@ import styles from './NavItem.module.scss';
 
 const NavItem = ({ imageSrc, width, isSelected, onClick }) => {
   const selectedStyle = {
-    background: "#BB5858"
+    background: "#BB5858",
+    border: "none"
   };
 
   return (
@@ -14,7 +15,7 @@ const NavItem = ({ imageSrc, width, isSelected, onClick }) => {
     >
       <img
         src={imageSrc}
-        style={isSelected ? { filter: "invert(85%)", width } : { width }}
+        style={isSelected ? { filter: "invert(92%)", width } : { width }}
         alt="nav item"
       />
     </div>

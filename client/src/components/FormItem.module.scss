@@ -3,17 +3,19 @@
   height: fit-content;
 
   width: fit-content;
+  align-self: end;
 
   :nth-of-type(2){
     font-size: 12px;
     color: #f6f6f6;
-    opacity: 0.5;
+
+    opacity: 0.75;
   }
 
   label{
     position: absolute;
     color: #f6f6f6;
-    opacity: 0.7;
+
     bottom: 20px;
     left: 10px;
 
@@ -38,7 +40,7 @@
 
   textarea{
     height: 340px;
-    width: 848px;
+    width: 700px;
 
     background: none;
 

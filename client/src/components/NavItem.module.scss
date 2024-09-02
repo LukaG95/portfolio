@@ -4,28 +4,29 @@
   align-items: center;
   justify-content: center;
 
-  height: 33px;
-  width: 33px;
+  height: 50px;
+  width: 50px;
 
-  border-radius: 50px;
+  border-radius: 10px;
   
   margin-bottom: 15px;
 
   cursor: pointer;
 
-  transition: background 0.25s ease; 
+  transition: background 0.25s ease, border 0.25s ease; 
 
   &:hover{
-    background: #462020;
+    background: #1a1a1a;
+    border: 1px solid rgb(39, 39, 39);
   }
 
   &:active{
-    background: #532626;
+    background: #202020;
   }
 
   img{
     display: block; // fixes some sort of padding below the image
-    filter: invert(65%);
+    filter: invert(60%);
 
     transition: filter 0.75s ease; 
   }
