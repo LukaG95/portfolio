@@ -154,7 +154,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.10 } 
+      { threshold: 0.23 } 
     );
   
     // Observe all elements with class .content
@@ -175,7 +175,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      //console.log(scrollPosition)
+      console.log(scrollPosition)
 
       if (s_width <= 1130){
         if (scrollPosition < 1530) {
@@ -190,11 +190,11 @@ function App() {
       }
 
       else {
-        if (scrollPosition < 500) {
+        if (scrollPosition < 400) {
           setSelectedIndex(0);
-        } else if (scrollPosition >= 500 && scrollPosition < 1800) {
+        } else if (scrollPosition >= 400 && scrollPosition < 1600) {
           setSelectedIndex(1);
-        } else if (scrollPosition >= 1800 && scrollPosition < 2600) {
+        } else if (scrollPosition >= 1600 && scrollPosition < 2500) {
           setSelectedIndex(2);
         } else {
           setSelectedIndex(3);
@@ -256,8 +256,8 @@ function App() {
            
         </div>
       </div>
-      {/* <div className={styles.dimensions}>{s_width}</div>
-      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div> */}
+      <div className={styles.dimensions}>{s_width}</div>
+      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div>
       <div className={styles.left}>
         <div className={styles.placeholder}>
           <div className={styles.top}>
@@ -288,7 +288,7 @@ function App() {
         <div className={styles.one} id="one">
           <div className={styles.content}>
             <div className={styles["navi-text-on-middle"]}>About me</div>
-            <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span> I'm a <span>full-stack</span> developer</div>
+            <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span>, I'm a <span>full-stack</span> developer</div>
             <div className={styles["new-skills-outer"]}>
 
               <div>

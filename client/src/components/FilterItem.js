@@ -12,7 +12,7 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
       className={styles.filter} 
       style={customStyle()}
     >
-      <div  style={{zIndex: 2}}>
+      <div style={{zIndex: 2, justifyContent: moreLength && "start", paddingLeft: moreLength && "20px", fontSize: moreLength && "16px"}}>
         {isImageOption ? (
           <img src={currentOption.src} alt={currentOption.value} />
         ) : (
@@ -57,9 +57,18 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
       visibility: "hidden", 
       opacity: 0,
     }
-    
-    if (open) return open_styling 
-    else return closed_styling
+
+    let style;
+    if (open) style = open_styling 
+    else style = closed_styling
+
+    if (moreLength){
+      style.justifyContent = "start";
+      style.paddingLeft = "20px";
+      style.fontSize = "16px";
+    }
+
+    return style;
   }
 
 

@@ -16,6 +16,7 @@
 
 .left{
   color: #f6f6f6;
+ 
 
   font-weight: 500;
   font-size: 24px;
@@ -27,6 +28,7 @@
 
   background: #131313;
   //border-right: 1px solid #2B2B2B;
+  background: rgb(116, 116, 116);
 
   .placeholder{
     position: sticky;
@@ -42,7 +44,7 @@
 
     border: 1px solid #3f3f3f;
 
-     box-shadow: 0px 4px 11.1px 5px rgba(0, 0, 0, 0.55);
+    box-shadow: 0px 4px 11.1px 3px rgba(0, 0, 0, 0.35);
     border-radius: 30px;
 
     animation: appearFromLeft 1s ease, appear 1s ease;
@@ -220,6 +222,8 @@
   color: #f6f6f6;
   width: 100%;
 
+  border: 1px solid red;
+
   .one, .two, .three, .four{
     display: flex;
     flex-direction: column;
@@ -229,7 +233,7 @@
     //border-bottom: 1px solid #2B2B2B;
 
     padding-top: 80px;
-    padding-bottom: 140px;
+    padding-bottom: 50px;
     padding-left: 110px;
     padding-right: 110px;
   }
@@ -289,7 +293,7 @@
       border: 1px solid #3f3f3f;
       border-radius: 30px;
 
-      box-shadow: 0px 4px 11.1px 15px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 4px 11.1px 5px rgba(0, 0, 0, 0.25);
 
       >:nth-child(1), >:nth-child(2){
         display: flex;
@@ -337,7 +341,7 @@
       height: 260px;
       width: 780px;
 
-      box-shadow: 0px 4px 11.1px 15px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 4px 11.1px 10px rgba(0, 0, 0, 0.25);
 
       animation: move 2s infinite;
 
@@ -677,6 +681,8 @@
   padding-right: 55px;
   padding-left: 55px;
 
+  background: lightblue;
+
  // border-left: 1px solid #2B2B2B;
 }
 
@@ -837,7 +843,7 @@
 
 
 
-@media (max-width: 1680px) {
+@media (max-width: 1500px) {
   .middle .one .main-text {
     font-size: 50px;
     width: 550px;
