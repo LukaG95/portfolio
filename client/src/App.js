@@ -41,7 +41,7 @@ import WebApp from './images/web app.png';
 import { AppContext } from './context/AppContext';
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(true);
+  const [showWebsite, setShowWebsite] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
@@ -256,8 +256,8 @@ function App() {
            
         </div>
       </div>
-      <div className={styles.dimensions}>{s_width}</div>
-      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div>
+     {/*  <div className={styles.dimensions}>{s_width}</div>
+      <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div> */}
       <div className={styles.left}>
         <div className={styles.placeholder}>
           <div className={styles.top}>
