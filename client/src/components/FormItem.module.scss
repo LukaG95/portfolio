@@ -5,6 +5,7 @@
   width: fit-content;
   align-self: end;
 
+
   :nth-of-type(2){
     font-size: 12px;
     color: #f6f6f6;
@@ -40,7 +41,7 @@
 
   textarea{
     height: 340px;
-    width: 700px;
+    width: 100%;
 
     background: none;
 
@@ -57,8 +58,19 @@
   }
 }
 
+@media (max-width: 1180px) {
+  .form-item {
+    width: 100%;
 
-@media (max-width: 1680px) {
+    input {
+      width: 100%;
+    }
+  }
+
+}
+
+
+/* @media (max-width: 1680px) {
   .form-item input{
     width: 220px;
   }
@@ -88,4 +100,4 @@
 
 }
 
-
+ */

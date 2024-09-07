@@ -6,7 +6,9 @@
   justify-content: space-between;
   align-items: center;
 
-  width: 123px;
+  width: 100%;
+  min-width: 115px;
+  max-width: 123px;
 
   color: #888888;
   background-color: #1A1A1A;
@@ -18,7 +20,8 @@
   font-weight: 400;
 
   transition: transform 0.3s ease-in-out, border 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out; 
-
+  flex: 1 1 100px;
+  
   .test{
     transition: opacity 0.3s ease-in-out;
   }
@@ -47,7 +50,7 @@
 
 }
 
-
+/* 
 @media (min-width: 1131px) and (max-width: 1680px) {
   .skill{
     max-width: 82px;
@@ -72,4 +75,4 @@
     box-sizing: border-box;
   }
 
-}
+} */

@@ -17,7 +17,6 @@
 .left{
   color: #f6f6f6;
  
-
   font-weight: 500;
   font-size: 24px;
 
@@ -28,7 +27,6 @@
 
   background: #131313;
   //border-right: 1px solid #2B2B2B;
-  background: rgb(116, 116, 116);
 
   .placeholder{
     position: sticky;
@@ -215,14 +213,14 @@
 }
 
 .content{
-  width: 850px;
+  width: 100%;
+  max-width: 850px;
+
 }
 
 .middle{
   color: #f6f6f6;
   width: 100%;
-
-  border: 1px solid red;
 
   .one, .two, .three, .four{
     display: flex;
@@ -234,13 +232,12 @@
 
     padding-top: 80px;
     padding-bottom: 50px;
-    padding-left: 110px;
-    padding-right: 110px;
+
   }
 
   .one{
+  
     .content{
-
       animation: appearFromTop 1s ease, appear 1s ease;
     }
 
@@ -270,11 +267,15 @@
 
     .skills-wrapper{
       display: flex;
-      justify-content: space-between;
-
+      flex-wrap: wrap;
+   
       margin-top: 125px;
 
-      width: 850px;
+      width: 100%;
+      max-width: 850px; 
+
+      gap: 15px;
+
     }
 
     .new-skills-outer{
@@ -547,6 +548,7 @@
       p{
         position: absolute;
         left: 60px;
+        left: 8%;
         z-index: 2;
       }
 
@@ -555,17 +557,21 @@
         font-weight: 800;
 
         bottom: 90px;
+        bottom: 22.5%;
       }
 
       p:nth-of-type(2) {
         bottom: 55px;
+        bottom: 13.5%;
         font-size: 20px;
       }
 
       p:nth-of-type(3) {
         left: auto;
         bottom: 60px;
+        bottom: 13.5%;
         right: 30px;
+        right: 4%;
 
         font-size: 24px;
         font-weight: 500;
@@ -582,20 +588,16 @@
 
     .content{
       transition: opacity 1.5s ease, transform 0.75s ease;
+
     }
 
     .price-wrapper{
-    
-      display: grid;
+      display: flex;
 
-      grid-template-columns: 1fr 1fr;
+      flex-wrap: wrap;
       gap: 80px;
 
-      width: 850px;
-
-      :last-child{
-        margin-right: 0px;
-      }
+      justify-content: center;
     }
   }
 
@@ -610,10 +612,12 @@
     }
  
     form{
-      width: 700px;
-
+      width: 100%;
+      max-width: 700px;
+      
       >div{
         display: flex;
+
         position: relative;
 
         justify-content: space-between;
@@ -680,8 +684,6 @@
   height: auto;
   padding-right: 55px;
   padding-left: 55px;
-
-  background: lightblue;
 
  // border-left: 1px solid #2B2B2B;
 }
@@ -774,7 +776,6 @@
   }
 }
 
-
 @keyframes appearFromLeft {
   0% {
     opacity: 0;
@@ -825,8 +826,6 @@
   }
 }
 
-
-
 @keyframes move {
   0% {
     left: 0;
@@ -844,18 +843,28 @@
 
 
 @media (max-width: 1500px) {
+  .left .placeholder{
+    margin-right: 40px;
+  }
+
+  .right{
+    padding: 0px 40px;
+    border-left: none;
+  }
+
+  .middle .one, .middle .two, .middle .three {
+    border-bottom: none;
+  }
+
+
   .middle .one .main-text {
     font-size: 50px;
-    width: 550px;
+
   }
 
   .middle .one .middle-text {
     font-size: 14px;
-    width: 550px;
-  }
-
-  .middle .one .skills-wrapper{
-    width: 550px;
+    width: 100%;
   }
 
   .middle .two .work-wrapper{
@@ -869,74 +878,102 @@
   }
 
   .middle .three .price-wrapper{
-    width: 550px;
-    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+  }
+
+
+}
+
+@media (max-width: 1180px){
+
+  .middle .two .new-work-block {
+    p:nth-last-of-type(1){
+      font-size: 20px;
+    }
+    p:nth-last-of-type(2){
+      font-size: 16px;
+      bottom: 17%;
+    }
+    p:nth-last-of-type(3){
+      bottom: 30%;
+      font-size: 28px;
+    }
   }
 
   .middle .four form{
-    width: 550px
-  }
+    >div{
+      margin-bottom: 70px;
+    }
 
+    >:nth-child(1){
+      flex-direction: column;
+      height: 140px;
+    }
+
+    >:nth-child(2){
+      flex-direction: column;
+      height: 165px !important;
+
+    }
+
+  }
 }
 
 
-@media (max-width: 1310px) {
-  .left{
-    border-right: none;
-  }
-
-  .left .placeholder{
-    margin-right: 20px;
-  }
-
-  .right{
-    padding: 0px 20px;
-    border-left: none;
-  }
-
-  .middle .one, .middle .two, .middle .three {
-    border-bottom: none;
-  }
-
-}
-
-
-
-@media (max-width: 1130px) {
+@media (max-width: 950px) {
   .app{
     display: grid;
   }
 
   .left{
+    display: flex;
+    justify-content: center;
     width: 100%;
+
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-left: 0px;
 
     order: 2;
 
     //border-bottom: 1px solid #2B2B2B;
     animation: appearFromLeft 1s ease, appear 1s ease;
   }
-
-  .middle{
-    order: 3;
-  }
-
+  
   .left .placeholder{
     border: none;
-    padding: 25px;
-
+    padding: 30px;
+    box-shadow: none;
+    
+    width: 100%;
+    max-width: 400px;
+    
+    margin-right: 0px;
+    
     .top img{
-      top: -10px;
+      top: 0px;
       right: 40px;
       
       width: 70px;
     }
+    
+    .profile-image{
+      width: 100%;
+      max-width: 300px;
+      height: 100%;
+    }
   }
+  
+    .middle{
+      order: 3;
+  
+    }
 
   .middle .one, .middle .two, .middle .three, .middle .four {
     //border-bottom: 1px solid #2B2B2B;
 
+    padding-top: 50px;
     padding-left: 25px;
     padding-right: 25px;
 
@@ -963,11 +1000,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 25px;
 
     width: 100%;
 
     margin-top: 0px;
+
 
   }
 
@@ -1000,35 +1038,21 @@
     }
   }
 
-  .middle .three .price-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    width: 100%;
-    flex-wrap: wrap;
-
-  }
-
-  .middle .four form{
-    width: 100%;
-
-    >div{
-      flex-direction: column;
-
-      height: "fit-content";
-      margin-bottom: 0px;
-
+  
+  .middle .two .new-work-block {
+    p:nth-last-of-type(1){
+      font-size: 24px;
+    }
+    p:nth-last-of-type(2){
+      font-size: 20px;
+      bottom: 15%;
+    }
+    p:nth-last-of-type(3){
+      bottom: 25%;
+      font-size: 32px;
     }
 
-    >div:nth-of-type(2){
-      height: auto;
-   
-      align-items: start;
-      margin-bottom: 30px;
-    }
-
-   
   }
 
   .right{
@@ -1053,6 +1077,42 @@
 
 }
 
+
+@media (max-width: 650px) {
+  .middle .two .new-work-block {
+    p:nth-last-of-type(1){
+      font-size: 20px;
+    }
+    p:nth-last-of-type(2){
+      font-size: 16px;
+      bottom: 15%;
+    }
+    p:nth-last-of-type(3){
+      bottom: 25%;
+      font-size: 28px;
+    }
+
+  }
+
+}
+
+@media (max-width: 500px) {
+  .middle .two .new-work-block {
+    p:nth-last-of-type(1){
+      font-size: 16px;
+    }
+    p:nth-last-of-type(2){
+      font-size: 12px;
+      bottom: 15%;
+    }
+    p:nth-last-of-type(3){
+      bottom: 25%;
+      font-size: 24px;
+    }
+
+  }
+
+}
 
 
 

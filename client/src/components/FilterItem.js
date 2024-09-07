@@ -78,6 +78,13 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
     if (moreLength){
       style.width = "260px";
       style.marginBottom = "0px";
+
+      
+      if (s_width <= 1180){
+        style.position = "absolute";
+        style.top = "103px";
+        style.width = "100%";
+      }
     }
 
     if (open){

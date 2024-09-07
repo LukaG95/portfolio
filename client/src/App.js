@@ -288,32 +288,84 @@ function App() {
         <div className={styles.one} id="one">
           <div className={styles.content}>
             <div className={styles["navi-text-on-middle"]}>About me</div>
-            <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span>, I'm a <span>full-stack</span> developer</div>
-            <div className={styles["new-skills-outer"]}>
+            { s_width <= 1500 ? 
+              <>
+                <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span>, I'm a <span>full-stack</span> developer</div>
+                <div className={styles["middle-text"]}><div>I love creating&nbsp;</div><LetterBoxes /><div>&nbsp;websites</div></div>
+                <div className={styles["skills-wrapper"]}>
+                  <Skill
+                    imageSrc={ReactLogo}
+                    imageHoverSrc={ReactRedLogo}
+                    name="ReactJS"
+                    /* width={s_width <= 1680 && s_width > 1130 ? "40px" : "60px"} */
+                    width={"60px"}
+                  />
+                  <Skill
+                    imageSrc={NodeLogo}
+                    imageHoverSrc={NodeRedLogo}
+                    name="NodeJS"
+                    /* width={s_width <= 1680 && s_width > 1130 ? "34px" : "50px"} */
+                    width={"50px"}
+                  />
+                  <Skill
+                    imageSrc={FigmaLogo}
+                    imageHoverSrc={FigmaRedLogo}
+                    name="Figma"
+                    /* width={s_width <= 1680 && s_width > 1130 ? "25px" : "40px"} */
+                    width={"40px"}
+                  />
+                  <Skill
+                    imageSrc={MongoDBLogo}
+                    imageHoverSrc={MongoDBRedLogo}
+                    name="MongoDB"
+                    /* width={s_width <= 1680 && s_width > 1130 ? "30px" : "47px"} */
+                    width={"47px"}
+                  />
+                  <Skill
+                    imageSrc={HerokuLogo}
+                    imageHoverSrc={HerokuRedLogo}
+                    name="Heroku"
+                    /* width={s_width <= 1680 && s_width > 1130 ? "35px" : "51px"} */
+                    width={"51px"}
+                  />
+                  <Skill
+                    imageSrc={GithubLogo}
+                    imageHoverSrc={GithubRedLogo}
+                    name="Github"
+                    /* width={s_width <= 1680 && s_width > 1130 ? "40px" : "56px"} */
+                    width={"56px"}
+                  />
+                </div>
+              </> : 
+              <>
+                <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span>, I'm a <span>full-stack</span> developer</div>
+                <div className={styles["new-skills-outer"]}>
 
-              <div>
-                <div className={styles["random-word"]}>{currentWord.toUpperCase()}</div>
-              </div>
-              
-              <div>
-                <div className={styles["website-text"]}>WEBSITES</div>
-              </div>
-              
-              <div ref={innerDivRef} className={styles["new-skills-inner"]}>
-             
-                {
-                  skills.map(skill => 
-                    <div className={styles["new-skill"]} style={{paddingLeft: skill.padding}}>
-                      <img src={skill.logo} alt={skill.name} style={{width: skill.width}}/>
-                      <div style={{marginLeft: skill.margin}}>{skill.name}</div>
-                    </div>
-                  )
-                }
+                  <div>
+                    <div className={styles["random-word"]}>{currentWord.toUpperCase()}</div>
+                  </div>
+                  
+                  <div>
+                    <div className={styles["website-text"]}>WEBSITES</div>
+                  </div>
+                  
+                  <div ref={innerDivRef} className={styles["new-skills-inner"]}>
                 
-              </div>
-            
-            </div>
-
+                    {
+                      skills.map(skill => 
+                        <div className={styles["new-skill"]} style={{paddingLeft: skill.padding}}>
+                          <img src={skill.logo} alt={skill.name} style={{width: skill.width}}/>
+                          <div style={{marginLeft: skill.margin}}>{skill.name}</div>
+                        </div>
+                      )
+                    }
+                    
+                  </div>
+                
+                </div>
+              </>
+            }
+    
           </div>
         </div>
         <div className={`${styles.two} observed`} ref={divRef} id="two">
@@ -338,23 +390,23 @@ function App() {
           </div>
         </div>
         <div className={`${styles.three} observed`} id="three">
-         <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
-           <div style={{marginBottom: "35px"}} className={styles["navi-text-on-middle"]}>Pricing</div>
-            <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
-              <PriceBlock 
-                title={"BASIC"}
-                price={15}
-                benefits={["Require your wireframe", "Using design and code templates"]}
-              />
-              <PriceBlock 
-                title={"ENTERPRISE"}
-                price={25}
-                benefits={["Handcrafted design", "Integrated database and backend", "High priority", "24/7 support"]}
-              />
-            </div>
+          <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+            <div style={{marginBottom: "35px"}} className={styles["navi-text-on-middle"]}>Pricing</div>
+              <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
+                <PriceBlock 
+                  title={"BASIC"}
+                  price={15}
+                  benefits={["Require your wireframe", "Using design and code templates"]}
+                />
+                <PriceBlock 
+                  title={"ENTERPRISE"}
+                  price={25}
+                  benefits={["Handcrafted design", "Integrated database and backend", "High priority", "24/7 support"]}
+                />
+              </div>
             <p style={{marginTop: "50px", fontWeight: "370"}}>* All plans include <span style={{color: "#E56A6A"}}>responsive</span> design</p>
             <p style={{marginTop: "10px", fontWeight: "370"}}>* Hosting starts at 5€/month upon request</p>
-          </div>
+          </div>  
         </div>
         <div className={`${styles.four} observed`} id="four">
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
