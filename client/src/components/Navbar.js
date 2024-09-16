@@ -29,7 +29,7 @@ function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
     else console.log("no element")
   };
 
-  const { language, setLanguage, selectedColor, setSelectedColor } = useContext(AppContext);
+  const { language, setLanguage, color, setColor } = useContext(AppContext);
 
   return (
     <>
@@ -47,8 +47,8 @@ function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
 
             <FilterItem 
               options={colors} 
-              currentOption={selectedColor} 
-              onOptionChange={setSelectedColor}
+              currentOption={color} 
+              onOptionChange={setColor}
               isImageOption={true}
             />
           </>

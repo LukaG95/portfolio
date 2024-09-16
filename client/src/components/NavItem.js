@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import styles from './NavItem.module.scss'; 
+import React, { useState, useContext } from 'react';
+import styles from './NavItem.module.scss';
+import { AppContext } from '../context/AppContext';
 
 const NavItem = ({ imageSrc, width, isSelected, onClick }) => {
+  const { color } = useContext(AppContext);
+
   const selectedStyle = {
-    background: "#BB5858",
+    background: color.value,
     border: "none"
   };
 

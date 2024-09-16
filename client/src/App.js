@@ -41,11 +41,13 @@ import WebApp from './images/web app.png';
 import { AppContext } from './context/AppContext';
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
   const { languages, colors } = info();
+
+  const { language, setLanguage, color, setColor } = useContext(AppContext);
 
   const skills = [{
       logo: ReactLogo,
@@ -82,23 +84,68 @@ function App() {
     }
   ]
 
-  const words = ['fast', 'modern', 'beautiful', 'timeless', 'secure', 'dynamic', 'unique', 'edgy'];
-  const random_num = Math.floor(Math.random() * (words.length-1)) + 1;
-  const [usedWords, setUsedWords] = useState([words[random_num]]);
-  const [currentWord, setCurrentWord] = useState(words[random_num]);
+  const eng_words = ['fast', 'modern', 'beautiful', 'timeless', 'secure', 'dynamic', 'unique', 'edgy'];
+  const slo_words = ['hitre', 'moderne', 'privlačne', 'večne', 'varne', 'dinamične', 'univerzalne', 'drzne'];
+
+  const words = [
+    {
+      ENG: "fast",
+      SLO: "hitre"
+    },
+    {
+      ENG: "modern",
+      SLO: "moderne"
+    },
+    {
+      ENG: "beautiful",
+      SLO: "privlačne"
+    },
+    {
+      ENG: "timeless",
+      SLO: "večne"
+    },
+    {
+      ENG: "secure",
+      SLO: "privlačvarnene"
+    },
+    {
+      ENG: "dynamic",
+      SLO: "dinamične"
+    },
+    {
+      ENG: "unique",
+      SLO: "univerzalne"
+    },
+    {
+      ENG: "edgy",
+      SLO: "drzne"
+    }
+  ]
+
+  const randomIndex = Math.floor(Math.random() * words.length);
+  const [usedIndexes, setUsedIndexes] = useState([randomIndex]);
+  const [currentWord, setCurrentWord] = useState(words[randomIndex][language.name]);
+
   const innerDivRef = useRef(null);
 
   useEffect(() => {
     function updateWord() {
-      let filtered_words = words.filter(word => !usedWords.includes(word))
-      
-      if (usedWords.length >= words.length) {
-        filtered_words = words;
-        setUsedWords([]);
+      if (usedIndexes.length >= words.length){
+        setUsedIndexes([]);
       }
 
-      const final_word = filtered_words[Math.floor(Math.random() * filtered_words.length)]; // Pick a random word
-      setUsedWords(prev => [...prev, final_word]);
+      let availableIndexes = Array.from({ length: words.length }, (_, i) => i + 1);
+      availableIndexes = availableIndexes.filter(i => !usedIndexes.includes(i));
+
+      const randomIndex = Math.floor(Math.random() * availableIndexes.length);
+      const chosenIndex = availableIndexes[randomIndex];
+
+      if (!words[chosenIndex])
+        console.log(randomIndex, chosenIndex, language)
+    
+      const final_word = words[chosenIndex][language.name];
+
+      setUsedIndexes(prev => [...prev, chosenIndex]);
       setCurrentWord(final_word);
     }
 
@@ -175,7 +222,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      console.log(scrollPosition)
+      //console.log(scrollPosition)
 
       if (s_width <= 1130){
         if (scrollPosition < 1530) {
@@ -220,8 +267,6 @@ function App() {
     else console.log("no element")
   };
 
-  const { language, setLanguage, selectedColor, setSelectedColor } = useContext(AppContext);
-
   if (showWebsite)
   return (
     <div className={styles.app}>
@@ -247,8 +292,8 @@ function App() {
 
             <FilterItem 
               options={colors} 
-              currentOption={selectedColor} 
-              onOptionChange={setSelectedColor}
+              currentOption={color} 
+              onOptionChange={setColor}
               isImageOption={true}
             />
 
@@ -263,8 +308,8 @@ function App() {
           <div className={styles.top}>
             <div>Luka</div>
             <div>
-              <div>Web designer</div>
-              <div>and developer</div>
+              <div>{language.placeholder_text1}</div>
+              <div>{language.placeholder_text2}</div>
             </div>
             <img src={Logo}  />
           </div>
@@ -274,24 +319,24 @@ function App() {
             <div>Ljubljana, SL</div>
           </div>
           <div className={styles.socials}>
-            <div><img src={Discord} style={{width: 13}}></img></div>
-            <div><img src={Twitter}></img></div>
-            <div><img src={Instagram}></img></div>
-            <div><img src={Facebook}></img></div>
+            <div className={styles[`hover-border-${color.name}`]}><img src={Discord} style={{width: 13}}></img></div>
+            <div className={styles[`hover-border-${color.name}`]}><img src={Twitter}></img></div>
+            <div className={styles[`hover-border-${color.name}`]}><img src={Instagram}></img></div>
+            <div className={styles[`hover-border-${color.name}`]}><img src={Facebook}></img></div>
           </div>
-          <div className={styles["hire-me-button"]} onClick={()=> handleNavItemClick(3, "#four")}>
-            Hire me!
+          <div className={`${styles["hire-me-button"]}`} style={{background: color.value, borderBottomColor: color.dark}} onClick={()=> handleNavItemClick(3, "#four")}>
+            {language.placeholder_text3}
           </div>
         </div>
       </div>
       <div className={styles.middle}>
         <div className={styles.one} id="one">
           <div className={styles.content}>
-            <div className={styles["navi-text-on-middle"]}>About me</div>
+            <div className={styles["navi-text-on-middle"]}>{language.navi_text1}</div>
             { s_width <= 1500 ? 
               <>
-                <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span>, I'm a <span>full-stack</span> developer</div>
-                <div className={styles["middle-text"]}><div>I love creating&nbsp;</div><LetterBoxes /><div>&nbsp;websites</div></div>
+                <div className={styles["main-text"]} >Hello there, my name is <span style={{color: color.value}}>Luka</span>, I'm a <span style={{color: color.value}}>full-stack</span> developer</div>
+                <div className={styles["middle-text"]}><div>I love creating&nbsp;</div><LetterBoxes /><div>&nbsp;{language.skills_text1}</div></div>
                 <div className={styles["skills-wrapper"]}>
                   <Skill
                     imageSrc={ReactLogo}
@@ -338,7 +383,7 @@ function App() {
                 </div>
               </> : 
               <>
-                <div className={styles["main-text"]}>Hello there, my name is <span>Luka</span>, I'm a <span>full-stack</span> developer</div>
+                <div className={styles["main-text"]}>{language.main_text1} <span style={{color: color.value}}>Luka</span>{language.main_text2} <span style={{color: color.value}}>full-stack</span> {language.main_text3}</div>
                 <div className={styles["new-skills-outer"]}>
 
                   <div>
@@ -346,7 +391,7 @@ function App() {
                   </div>
                   
                   <div>
-                    <div className={styles["website-text"]}>WEBSITES</div>
+                    <div className={styles["website-text"]}>{language.skills_text1}</div>
                   </div>
                   
                   <div ref={innerDivRef} className={styles["new-skills-inner"]}>
@@ -370,50 +415,51 @@ function App() {
         </div>
         <div className={`${styles.two} observed`} ref={divRef} id="two">
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
-            <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>Work</div>
+            <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>{language.navi_text2}</div>
             <div style={{marginBottom: "70px"}}className={styles["new-work-block"]}>
               <img src={SimpleWebsite}></img>
               <div></div>
-              <p className={styles["white-to-black"]}><span style={{color: "#BB5858"}}>Basic</span> website</p>
-              <p className={styles["white-to-black"]}>Grow your business</p>
-              <p><span style={{color: "#BB5858"}}>from</span> <span className={styles["white-to-black"]}>100€</span></p>
+              <p className={styles["white-to-black"]}><span style={{color: color.value}}>{language.work_text1}</span> {language.work_text2}</p>
+              <p className={styles["white-to-black"]}>{language.work_text3}</p>
+              <p><span style={{color: color.value}}>{language.work_text4}</span> <span className={styles["white-to-black"]}>100€</span></p>
               <div style={{background: "#e0e0e0"}}></div>
             </div>
             <div className={styles["new-work-block"]}>
               <img src={WebApp}></img>
               <div></div>
-              <p><span style={{color: "#BB5858"}}>Web</span> app</p>
-              <p>PC part picker</p>
-              <p><span style={{color: "#BB5858"}}>from</span> 1.500€</p>
+              <p><span style={{color: color.value}}>{language.work_text5}</span> {language.work_text6}</p>
+              <p>{language.work_text7}</p>
+              <p><span style={{color: color.value}}>{language.work_text4}</span> 1.500€</p>
               <div></div>
             </div>
           </div>
         </div>
         <div className={`${styles.three} observed`} id="three">
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
-            <div style={{marginBottom: "35px"}} className={styles["navi-text-on-middle"]}>Pricing</div>
+            <div style={{marginBottom: "35px"}} className={styles["navi-text-on-middle"]}>{language.navi_text3}</div>
               <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
                 <PriceBlock 
-                  title={"BASIC"}
+                  title={language.pricing_text1}
                   price={15}
-                  benefits={["Require your wireframe", "Using design and code templates"]}
+                  benefits={[language.pricing_text5, language.pricing_text6]}
                 />
                 <PriceBlock 
-                  title={"ENTERPRISE"}
+                  title={language.pricing_text3}
                   price={25}
-                  benefits={["Handcrafted design", "Integrated database and backend", "High priority", "24/7 support"]}
+                  background={true}
+                  benefits={[language.pricing_text7, language.pricing_text8, language.pricing_text9, language.pricing_text10]}
                 />
               </div>
-            <p style={{marginTop: "50px", fontWeight: "370"}}>* All plans include <span style={{color: "#E56A6A"}}>responsive</span> design</p>
-            <p style={{marginTop: "10px", fontWeight: "370"}}>* Hosting starts at 5€/month upon request</p>
+            <p style={{marginTop: "50px", fontWeight: "370"}}>* {language.pricing_text11} <span style={{color: color.value, filter: "brightness(1.5)"}}>responsive</span> {language.pricing_text12}</p>
+            <p style={{marginTop: "10px", fontWeight: "370"}}>* {language.pricing_text13}</p>
           </div>  
         </div>
         <div className={`${styles.four} observed`} id="four">
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
-            <div style={{marginBottom: "80px"}} className={styles["navi-text-on-middle"]}>Contact</div>
+            <div style={{marginBottom: "80px"}} className={styles["navi-text-on-middle"]}>{language.navi_text4}</div>
             <form className={`${styles.hidden} fade-in-div`}>
               <div>
-                <FormItem placeholder={"Full name *"}/>
+                <FormItem placeholder={`${language.form_text1} *`}/>
                 <FormItem placeholder={"Email *"}/>
               </div>
 
@@ -429,10 +475,10 @@ function App() {
               </div>
 
               <div>
-                <FormItem type={"textarea"} placeholder={"Message *"} placeholder2={"optional: include website examples in the message"} />
+                <FormItem type={"textarea"} placeholder={`${language.form_text2} *`} placeholder2={language.form_text3} />
               </div>
 
-              <button type='Submit' onClick={submitMessage} style={{opacity: !isFormFilled() && 0.5}} disabled={!isFormFilled()}>Send message</button>
+              <button type='Submit' onClick={submitMessage} style={{opacity: !isFormFilled() && 0.5, background: color.value, borderBottomColor: color.dark}} disabled={!isFormFilled()}>{language.form_text4}</button>
 
             </form>
           </div>

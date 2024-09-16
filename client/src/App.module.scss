@@ -1,3 +1,15 @@
+.hover-border-red{
+  &:hover{
+    border-color: #BB5858 !important;
+  }
+}
+.hover-border-green{
+  &:hover{
+    border-color: #66a549 !important;
+  }
+}
+
+
 .app{
   display: flex;
 
@@ -67,6 +79,8 @@
         font-weight: 350;
         font-size: 14px;
         line-height: 90%;
+
+        text-align: end;
       }
 
       :nth-child(2) :nth-child(2){
@@ -140,6 +154,7 @@
         height: 40px;
 
         margin-right: 10px;
+        background: #131313;
 
         border: 2px solid #4b4b4b;
         border-radius: 100%;
@@ -148,12 +163,11 @@
         transition: border 0.3s ease-in-out; 
 
         &:hover{
-        
-          border: 2px solid #BB5858;
+         // border: 2px solid #BB5858;
         }
       
         &:active{
-          background: #532626;
+          filter: brightness(1.2);
         }
 
         img{
@@ -169,14 +183,12 @@
       align-items: center;
       justify-content: center;
 
-      background: #BB5858;
-
       padding: 13px;
 
       font-weight: 650;
       font-size: 16px;
 
-      border-bottom: 5px solid #AA4C4C;
+      border-bottom: 5px solid;
       border-radius: 50px;
 
       width: 100%;
@@ -186,11 +198,11 @@
       user-select: none;
 
       &:hover{
-        background: #c45c5c;
+        filter: brightness(1.035);
       }
 
       &:active{
-        background: #ca5f5f;
+        filter: brightness(1.08);
         padding: 15.5px;
         border-bottom: none;
       }
@@ -248,7 +260,7 @@
       font-weight: 280;
 
       span{
-        color: #BB5858;
+        color: #66a549;
         font-weight: 400;
       }
     }
@@ -517,7 +529,7 @@
         background: #f6f6f6;
         opacity: 0;
 
-        height: 150px;
+        height: 40%;
         bottom: 10px;
         
         width: calc(100% - 2px);
@@ -899,6 +911,10 @@
       bottom: 30%;
       font-size: 28px;
     }
+
+    div:nth-of-type(2){
+      height: 50%;
+    }
   }
 
   .middle .four form{
@@ -1072,8 +1088,6 @@
     box-shadow: 0px 4px 11.1px 3px rgba(0, 0, 0, 0.35);
 
     border-bottom: 1px solid #2B2B2B;
-
-
   }
 
 }

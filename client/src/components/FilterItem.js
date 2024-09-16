@@ -14,9 +14,9 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
     >
       <div style={{zIndex: 2, justifyContent: moreLength && "start", paddingLeft: moreLength && "20px", fontSize: moreLength && "16px"}}>
         {isImageOption ? (
-          <img src={currentOption.src} alt={currentOption.value} />
+          <img src={currentOption.src} alt={currentOption.name} />
         ) : (
-          currentOption.value
+          currentOption.name
         )}
       </div>
 
@@ -27,17 +27,17 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
 
   function displayDropdown() {
     return options
-      .filter(option => option.value !== currentOption.value)
+      .filter(option => option.name !== currentOption.name)
       .map((option, index) => (
         <div
-          key={option.value}
+          key={option.name}
           onClick={() => onOptionChange(option)}
           style={dropdownStyle(index)}
         >
           {isImageOption ? (
-            <img src={option.src} alt={option.value} style={{ width: '20px' }} />
+            <img src={option.src} alt={option.name} style={{ width: '20px' }} />
           ) : (
-            option.value
+            option.name
           )}
         </div> 
       ));
