@@ -1,56 +1,100 @@
 import React, { useState, useEffect } from 'react';
 import styles from './LetterBoxes.module.scss';
 
-function LetterBoxes() {
-  const [letters, setLetters] = useState(Array(9).fill(''));
+function LetterBoxes({ language }) {
+  const [letters, setLetters] = useState(Array(10).fill(''));
 
-  const words = ['fast', 'modern', 'beautiful', 'timeless', 'secure', "dynamic", "unique", "edgy"];
+  const words = [
+    {
+      ENG: "fast",
+      SLO: "hitre"
+    },
+    {
+      ENG: "modern",
+      SLO: "moderne"
+    },
+    {
+      ENG: "beautiful",
+      SLO: "privlačne"
+    },
+    {
+      ENG: "timeless",
+      SLO: "večne"
+    },
+    {
+      ENG: "secure",
+      SLO: "varne"
+    },
+    {
+      ENG: "dynamic",
+      SLO: "dinamične"
+    },
+    {
+      ENG: "unique",
+      SLO: "edinstvene"
+    },
+    {
+      ENG: "edgy",
+      SLO: "drzne"
+    }
+  ]
+
+
   const alphabet = "abcdefghijklmnopqrstuvwyz";
-  let used_words = [];
+  let usedIndexes = [];
 
   useEffect(() => {
+    let intervalId;
+    let timeoutId;
+  
     const startAnimation = () => {
-      let filtered_words = words.filter(word => !used_words.includes(word))
-      if (filtered_words.length === 0) {
-        filtered_words = words;
-        used_words = [];
-      }
+      let availableIndexes = Array.from({ length: words.length }, (_, i) => i);
+      availableIndexes = availableIndexes.filter(i => !usedIndexes.includes(i));
+  
+      const randomIndex = Math.floor(Math.random() * availableIndexes.length);
+      const chosenIndex = availableIndexes[randomIndex];
+    
+      console.log(availableIndexes, randomIndex)
 
-      const final_word = filtered_words[Math.floor(Math.random() * filtered_words.length)]; // Pick a random word
-      used_words.push(final_word);
+      usedIndexes.push(chosenIndex);
+      if (usedIndexes.length >= words.length) usedIndexes = [];
 
+      const final_word = words[chosenIndex][language.name];
+      
+  
       // Start the interval to generate random letters
-      const intervalId = setInterval(() => {
+      intervalId = setInterval(() => {
         setLetters(prevLetters => 
           prevLetters.map(() => alphabet[Math.floor(Math.random() * alphabet.length)])
         );
-      }, 10); // Update every second
-
-      // Stop the random letter generation after 5 seconds and show the final word
-      const timeoutId = setTimeout(() => {
-        clearInterval(intervalId); // Stop random letters after 5 seconds
-
-        const newLetters = Array(9).fill('');
+      }, 10); // Update very quickly (every 10ms)
+  
+      // Stop the random letter generation after 1.5 seconds and show the final word
+      timeoutId = setTimeout(() => {
+        clearInterval(intervalId); // Stop random letters after 1.5 seconds
+  
+        const newLetters = Array(10).fill('');
         for (let i = 0; i < final_word.length; i++) {
           newLetters[i] = final_word[i];
         }
         setLetters(newLetters); // Set the final word in the letter boxes
-
+  
         // Wait for 3 seconds before restarting the process
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
           startAnimation(); // Restart the animation
         }, 3000);
-      }, 1500); // After 5 seconds
-
-      return () => {
-        clearInterval(intervalId);
-        clearTimeout(timeoutId);
-      };
+      }, 1500); // After 1.5 seconds
     };
-
+  
     startAnimation(); // Initial start of the animation
-
-  }, []);
+  
+    return () => {
+      // Cleanup both interval and timeout on language change or unmount
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, [language]);
+  
 
   return (
     <div className={styles["letterbox-wrapper"]}>

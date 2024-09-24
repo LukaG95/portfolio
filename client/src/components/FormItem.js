@@ -2,9 +2,8 @@ import { useState, useRef } from 'react';
 import styles from './FormItem.module.scss';
 
 
-function FormItem({ placeholder, type="input", placeholder2 }) {
+function FormItem({ placeholder, tip="text", placeholder2, req, inputValue, setInputValue }) {
   const [selected, setSelected] = useState(false);
-  const [inputValue, setInputValue] = useState('');
 
   const handleFocus = () => {
     setSelected(true);
@@ -19,18 +18,20 @@ function FormItem({ placeholder, type="input", placeholder2 }) {
   };
 
   return (
-    <div className={styles["form-item"]} style={{width: type !== "input" && "100%"}}>
+    <div className={styles["form-item"]} style={{width: tip !== "text" && tip !== "email" && "100%"}}>
       {
-        type === "input" ? 
+        tip === "text" || tip === "email" ? 
           <>
             <label htmlFor={placeholder} style={selected || inputValue.trim() !== '' ? {bottom: "35px", left: "0px", fontSize: "12px"} : {}}>{placeholder}</label>
             <input 
+              type={tip}
               id={placeholder}
               name={placeholder}
               onFocus={handleFocus}
               onBlur={handleBlur}
               onChange={handleChange}
               style={{ borderBottom: selected && "1px solid lightblue"}}
+              required={req}
             />
           </>
          : 

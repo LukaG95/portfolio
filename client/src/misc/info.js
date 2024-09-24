@@ -19,6 +19,7 @@ export function info(props) {
   languages[0].main_text1 = "Živjo, moje ime je";
   languages[0].main_text2 = " in sem";
   languages[0].main_text3 = "razvijalec";
+  languages[0].middle_text1 = "Rad izdelujem";
   languages[0].placeholder_text1 = "Spletni oblikovalec";
   languages[0].placeholder_text2 = "in razvijalec";
   languages[0].placeholder_text3 = "Najemi me!";
@@ -55,6 +56,7 @@ export function info(props) {
   languages[1].main_text1 = "Hello there, my name is";
   languages[1].main_text2 = ", I am a";
   languages[1].main_text3 = "developer";
+  languages[1].middle_text1 = "I love creating";
   languages[1].placeholder_text1 = "Web designer";
   languages[1].placeholder_text2 = "and developer";
   languages[1].placeholder_text3 = "Hire me!";

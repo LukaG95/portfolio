@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './FilterItem.module.scss';
 import useWindowDimensions from '../WindowDimensions.js';
 
@@ -26,6 +26,7 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
   );
 
   function displayDropdown() {
+
     return options
       .filter(option => option.name !== currentOption.name)
       .map((option, index) => (
@@ -89,7 +90,6 @@ const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, mor
 
     if (open){
       style.height = `${options.length*60}px`;
-      console.log(style.height)
     }
 
     return style;

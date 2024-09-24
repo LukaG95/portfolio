@@ -43,6 +43,17 @@ import { AppContext } from './context/AppContext';
 function App() {
   const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [budget, setBudget] = useState('');
+  const [message, setMessage] = useState('');
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(()=> {
+    setFormIsValid(isFormFilled);
+  }, [fullName, email, budget, message])
+
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
   const { languages, colors } = info();
@@ -53,12 +64,13 @@ function App() {
       logo: ReactLogo,
       name: "ReactJS",
       width: "60px"
-    },{
+    },
+    {
       logo: NodeLogo,
       name: "NodeJS",
       width: "55px"
     },
-    ,{
+    {
       logo: GithubLogo,
       name: "Github",
       width: "55px"
@@ -84,9 +96,6 @@ function App() {
     }
   ]
 
-  const eng_words = ['fast', 'modern', 'beautiful', 'timeless', 'secure', 'dynamic', 'unique', 'edgy'];
-  const slo_words = ['hitre', 'moderne', 'privlačne', 'večne', 'varne', 'dinamične', 'univerzalne', 'drzne'];
-
   const words = [
     {
       ENG: "fast",
@@ -106,7 +115,7 @@ function App() {
     },
     {
       ENG: "secure",
-      SLO: "privlačvarnene"
+      SLO: "varne"
     },
     {
       ENG: "dynamic",
@@ -123,30 +132,27 @@ function App() {
   ]
 
   const randomIndex = Math.floor(Math.random() * words.length);
-  const [usedIndexes, setUsedIndexes] = useState([randomIndex]);
+  let usedIndexes = [randomIndex];
   const [currentWord, setCurrentWord] = useState(words[randomIndex][language.name]);
 
   const innerDivRef = useRef(null);
 
   useEffect(() => {
-    function updateWord() {
-      if (usedIndexes.length >= words.length){
-        setUsedIndexes([]);
-      }
-
-      let availableIndexes = Array.from({ length: words.length }, (_, i) => i + 1);
+    function updateWord() {    
+      let availableIndexes = Array.from({ length: words.length }, (_, i) => i);
       availableIndexes = availableIndexes.filter(i => !usedIndexes.includes(i));
 
       const randomIndex = Math.floor(Math.random() * availableIndexes.length);
       const chosenIndex = availableIndexes[randomIndex];
-
-      if (!words[chosenIndex])
-        console.log(randomIndex, chosenIndex, language)
     
       const final_word = words[chosenIndex][language.name];
 
-      setUsedIndexes(prev => [...prev, chosenIndex]);
+      usedIndexes.push(chosenIndex);
+
+      if (usedIndexes.length >= words.length) usedIndexes = [];
+      
       setCurrentWord(final_word);
+
     }
 
     function handleAnimationIteration() {
@@ -161,16 +167,22 @@ function App() {
         innerDiv.removeEventListener('animationiteration', handleAnimationIteration);
       };
     }
-  }, [words]);
+  }, [language]);
 
-  const website_options = [
-    { value: "Basic" },
-    { value: "Enterprise" },
-  ];
+  const website_options = {
+    SLO: [
+      { name: "Osnovni" },
+      { name: "Napredni" }
+    ],
+    ENG: [
+      { name: "Basic" },
+      { name: "Enterprise" }
+    ]
+  }
 
-  const [websiteOption, setWebsiteOption] = useState(website_options[0]);
+  const [websiteOption, setWebsiteOption] = useState(website_options[language.name][0]);
   const [showSidebar, setShowSidebar] = useState(false);
-  
+
   useEffect(() => {
     setTimeout(()=> {
       setShowWebsite(true);
@@ -185,6 +197,10 @@ function App() {
       document.body.style.overflow = 'auto';
     }
   }, [showSidebar]);
+
+  useEffect(() => {
+    setWebsiteOption(website_options[language.name][0])
+  }, [language])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -335,8 +351,8 @@ function App() {
             <div className={styles["navi-text-on-middle"]}>{language.navi_text1}</div>
             { s_width <= 1500 ? 
               <>
-                <div className={styles["main-text"]} >Hello there, my name is <span style={{color: color.value}}>Luka</span>, I'm a <span style={{color: color.value}}>full-stack</span> developer</div>
-                <div className={styles["middle-text"]}><div>I love creating&nbsp;</div><LetterBoxes /><div>&nbsp;{language.skills_text1}</div></div>
+                <div className={styles["main-text"]}>{language.main_text1} <span style={{color: color.value}}>Luka</span>{language.main_text2} <span style={{color: color.value}}>full-stack</span> {language.main_text3}</div>
+                <div className={styles["middle-text"]}><div>{language.middle_text1}&nbsp;</div><LetterBoxes language={language}/><div>&nbsp;{language.skills_text1.toLowerCase()}</div></div>
                 <div className={styles["skills-wrapper"]}>
                   <Skill
                     imageSrc={ReactLogo}
@@ -442,12 +458,14 @@ function App() {
                   title={language.pricing_text1}
                   price={15}
                   benefits={[language.pricing_text5, language.pricing_text6]}
+                  chooseOption={() => setWebsiteOption(website_options[language.name][0])}
                 />
                 <PriceBlock 
                   title={language.pricing_text3}
                   price={25}
                   background={true}
                   benefits={[language.pricing_text7, language.pricing_text8, language.pricing_text9, language.pricing_text10]}
+                  chooseOption={() => setWebsiteOption(website_options[language.name][1])}
                 />
               </div>
             <p style={{marginTop: "50px", fontWeight: "370"}}>* {language.pricing_text11} <span style={{color: color.value, filter: "brightness(1.5)"}}>responsive</span> {language.pricing_text12}</p>
@@ -459,14 +477,14 @@ function App() {
             <div style={{marginBottom: "80px"}} className={styles["navi-text-on-middle"]}>{language.navi_text4}</div>
             <form className={`${styles.hidden} fade-in-div`}>
               <div>
-                <FormItem placeholder={`${language.form_text1} *`}/>
-                <FormItem placeholder={"Email *"}/>
+                <FormItem placeholder={`${language.form_text1} *`} inputValue={fullName} setInputValue={setFullName} req={true}/>
+                <FormItem tip={"email"} placeholder={"Email *"} inputValue={email} setInputValue={setEmail} req={true}/>
               </div>
 
               <div>
-                <FormItem placeholder={"Budget"}/>
+                <FormItem placeholder={"Budget"} inputValue={budget} setInputValue={setBudget} req={false}/>
                 <FilterItem 
-                  options={website_options} 
+                  options={website_options[language.name]} 
                   currentOption={websiteOption} 
                   onOptionChange={setWebsiteOption}
                   isImageOption={false}
@@ -475,10 +493,10 @@ function App() {
               </div>
 
               <div>
-                <FormItem type={"textarea"} placeholder={`${language.form_text2} *`} placeholder2={language.form_text3} />
+                <FormItem tip={"textarea"} placeholder={`${language.form_text2} *`} placeholder2={language.form_text3} inputValue={message} setInputValue={setMessage} req={true}/>
               </div>
 
-              <button type='Submit' onClick={submitMessage} style={{opacity: !isFormFilled() && 0.5, background: color.value, borderBottomColor: color.dark}} disabled={!isFormFilled()}>{language.form_text4}</button>
+              <button type='submit' onClick={submitMessage} style={{opacity: !formIsValid && 0.5, background: color.value, borderBottomColor: color.dark}} disabled={!formIsValid}>{language.form_text4}</button>
 
             </form>
           </div>
@@ -492,12 +510,19 @@ function App() {
   else return <Loader />;
 
   function isFormFilled(){
-    return false;
+    const isNonEmptyString = (value) => typeof value === 'string' && value.trim().length > 0;
+
+    const isValidFullName = isNonEmptyString(fullName);
+    const isValidEmail = isNonEmptyString(email); 
+    const isValidBudget = isNonEmptyString(budget);
+    const isValidMessage = isNonEmptyString(message);
+
+    return isValidFullName && isValidEmail && isValidBudget && isValidMessage;
   }
 
   function submitMessage(e){
     console.log("test")
-    e.preventDefault();
+    //e.preventDefault();
   }
 }
 
