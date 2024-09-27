@@ -8,7 +8,7 @@ import PaintBlue from '../images/paint blue.png';
 export function info(props) {
 
   let route;
-  if (process.env.NODE_ENV === "production") route = "lukagolob.com";
+  if (process.env.NODE_ENV === "production") route = "https://lukagolob.com";
   else route = "http://localhost:5000";
 
   const languages = [
