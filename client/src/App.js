@@ -529,7 +529,7 @@ function App() {
 
     console.log(route)
 
-    axios.post(`${route}/api/message/sendMessage`, { fullName, email, budget, plan: websiteOption, message}).then(res => {
+    axios.post(`${route}/api/message/sendMessage`, { fullName, email, budget, plan: websiteOption, message}, { withCredentials: true }).then(res => {
       if (res.status === 200) {
         createNotification("success", "Message sent");
         clearForm();
