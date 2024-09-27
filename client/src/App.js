@@ -534,13 +534,11 @@ function App() {
         createNotification("success", "Message sent");
         clearForm();
       } else {
-        console.log(res.data)
         createNotification("error", "Something went wrong");
       }
     }).catch(e => {
       try {
         createNotification("error", e.response.data.message);
-        console.log(e)
       } catch(e){
         createNotification("error", "Something went wrong");
       }

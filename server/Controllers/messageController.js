@@ -30,7 +30,7 @@ exports.sendMessage = async (req, res, next) => {
       await new Messages(new_message).save();
 
     } catch(err) {
-      console.log(err, 'something went wrong creating a match');
+      console.log(err, 'something went wrong saving message');
       return res.status(401).json({ success: false, message: 'something went wrong (401)'});
     }    
 
