@@ -27,6 +27,7 @@ function FormItem({ placeholder, tip="text", placeholder2, req, inputValue, setI
               type={tip}
               id={placeholder}
               name={placeholder}
+              value={inputValue}
               onFocus={handleFocus}
               onBlur={handleBlur}
               onChange={handleChange}
@@ -42,6 +43,7 @@ function FormItem({ placeholder, tip="text", placeholder2, req, inputValue, setI
             <textarea
               id={placeholder}
               name={placeholder}
+              value={inputValue}
               onFocus={handleFocus}
               onBlur={handleBlur}
               onChange={handleChange}

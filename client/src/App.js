@@ -10,7 +10,10 @@ import FormItem from './components/FormItem.js';
 import Navbar from './components/Navbar.js';
 import FilterItem from './components/FilterItem.js';
 import useWindowDimensions from './WindowDimensions.js';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, createNotification } from "./misc/toast";
 import { info } from './misc/info.js';
+import axios from 'axios';
 
 import ReactLogo from './images/react.png'; 
 import ReactRedLogo from './images/react red.png'; 
@@ -56,7 +59,7 @@ function App() {
 
   const divRef = useRef(null);
   const { s_width, s_height } = useWindowDimensions();
-  const { languages, colors } = info();
+  const { languages, colors, route } = info();
 
   const { language, setLanguage, color, setColor } = useContext(AppContext);
 
@@ -505,6 +508,7 @@ function App() {
       <div className={styles.right}>
         <Navbar selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} setShowSidebar={setShowSidebar}/>
       </div>
+      <ToastContainer />
     </div>
   );
   else return <Loader />;
@@ -521,8 +525,30 @@ function App() {
   }
 
   function submitMessage(e){
-    console.log("test")
-    //e.preventDefault();
+    e.preventDefault();
+
+    axios.post(`${route}/api/message/sendMessage`, { fullName, email, budget, plan: websiteOption, message}).then(res => {
+      if (res.status === 200) {
+        createNotification("success", "Message sent");
+        clearForm();
+      } else {
+        createNotification("error", "Something went wrong");
+      }
+    }).catch(e => {
+      try {
+        createNotification("error", e.response.data.message);
+      } catch(e){
+        createNotification("error", "Something went wrong");
+      }
+
+    })
+  }
+
+  function clearForm(){
+    setFullName('');
+    setEmail('');
+    setBudget('');
+    setMessage('');
   }
 }
 

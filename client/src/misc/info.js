@@ -7,6 +7,10 @@ import PaintBlue from '../images/paint blue.png';
 
 export function info(props) {
 
+  let route;
+  if (process.env.NODE_ENV === "production") route = "lukagolob.com";
+  else route = "http://localhost:5000";
+
   const languages = [
     { name: "SLO" },
     { name: "ENG" }
@@ -93,5 +97,5 @@ export function info(props) {
     { name: "blue", src: PaintBlue, value: "#4969d4", dark: "#3f5dbd", low: "#202636"},
   ];
 
-  return { languages, colors }
+  return { languages, colors, route }
 }
