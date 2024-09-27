@@ -527,6 +527,8 @@ function App() {
   function submitMessage(e){
     e.preventDefault();
 
+    console.log(route)
+
     axios.post(`${route}/api/message/sendMessage`, { fullName, email, budget, plan: websiteOption, message}).then(res => {
       if (res.status === 200) {
         createNotification("success", "Message sent");
