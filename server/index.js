@@ -6,9 +6,9 @@ const port = process.env.PORT || 5000;
 require('./startup/routes')(app);
 require('./startup/db')();
 
-/* app.get('/*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-}); */
+});
 
 const http = require('http').createServer(app);
 
