@@ -24,7 +24,7 @@ function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
       window.scrollTo(0, 0);
     }
     else if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: 'smooth' })
     }
     else console.log("no element")
   };

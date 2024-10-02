@@ -53,8 +53,6 @@ function LetterBoxes({ language }) {
   
       const randomIndex = Math.floor(Math.random() * availableIndexes.length);
       const chosenIndex = availableIndexes[randomIndex];
-    
-      console.log(availableIndexes, randomIndex)
 
       usedIndexes.push(chosenIndex);
       if (usedIndexes.length >= words.length) usedIndexes = [];

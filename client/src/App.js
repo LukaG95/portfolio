@@ -241,9 +241,82 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      //console.log(scrollPosition)
+      console.log(scrollPosition)
 
-      if (s_width <= 1130){
+      if (s_width <= 445){
+        if (scrollPosition < 1326) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 1326 && scrollPosition < 1938) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 1938 && scrollPosition < 3468) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      else if (s_width <= 864){
+        if (scrollPosition < 1224) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 1224 && scrollPosition < 2346) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 2346 && scrollPosition < 3162) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      else if (s_width <= 950){
+        if (scrollPosition < 1020) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 1020 && scrollPosition < 2140) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 2140 && scrollPosition < 2958) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      else if (s_width <= 1025){
+        if (scrollPosition < 714) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 714 && scrollPosition < 1420) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 1420 && scrollPosition < 2960) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      else if (s_width <= 1235){
+        if (scrollPosition < 610) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 610 && scrollPosition < 1630) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 1630 && scrollPosition < 3140) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      else if (s_width <= 1360){
+        if (scrollPosition < 610) {
+          setSelectedIndex(0);
+        } else if (scrollPosition >= 610 && scrollPosition < 1630) {
+          setSelectedIndex(1);
+        } else if (scrollPosition >= 1630 && scrollPosition < 2650) {
+          setSelectedIndex(2);
+        } else {
+          setSelectedIndex(3);
+        }
+      }
+
+      
+    /*   if (s_width <= 1130){
         if (scrollPosition < 1530) {
           setSelectedIndex(0);
         } else if (scrollPosition >= 1530 && scrollPosition < 2700) {
@@ -253,7 +326,7 @@ function App() {
         } else {
           setSelectedIndex(3);
         }
-      }
+      } */
 
       else {
         if (scrollPosition < 400) {
@@ -266,6 +339,8 @@ function App() {
           setSelectedIndex(3);
         }
       }
+
+       
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -273,7 +348,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [s_width]);
 
   const handleNavItemClick = (index, id) => {
     setSelectedIndex(index);
@@ -432,10 +507,11 @@ function App() {
     
           </div>
         </div>
-        <div className={`${styles.two} observed`} ref={divRef} id="two">
+        <div className={`${styles.two} observed`} ref={divRef}>
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+            <div id="two"></div>
             <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>{language.navi_text2}</div>
-            <div style={{marginBottom: "70px"}}className={styles["new-work-block"]}>
+            <div style={{marginBottom: "70px"}} className={styles["new-work-block"]}>
               <img src={SimpleWebsite}></img>
               <div></div>
               <p className={styles["white-to-black"]}><span style={{color: color.value}}>{language.work_text1}</span> {language.work_text2}</p>
@@ -453,8 +529,9 @@ function App() {
             </div>
           </div>
         </div>
-        <div className={`${styles.three} observed`} id="three">
+        <div className={`${styles.three} observed`}>
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+            <div id="three"></div>
             <div style={{marginBottom: "35px"}} className={styles["navi-text-on-middle"]}>{language.navi_text3}</div>
               <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
                 <PriceBlock 
@@ -475,8 +552,9 @@ function App() {
             <p style={{marginTop: "10px", fontWeight: "370"}}>* {language.pricing_text13}</p>
           </div>  
         </div>
-        <div className={`${styles.four} observed`} id="four">
+        <div className={`${styles.four} observed`}>
           <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+            <div id="four"></div>
             <div style={{marginBottom: "80px"}} className={styles["navi-text-on-middle"]}>{language.navi_text4}</div>
             <form className={`${styles.hidden} fade-in-div`}>
               <div>
