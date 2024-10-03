@@ -35,6 +35,7 @@ export function info(props) {
   languages[0].work_text5 = "Spletna";
   languages[0].work_text6 = "aplikacija";
   languages[0].work_text7 = "Sestavi računalnik";
+  languages[0].work_text8 = "Spletna stran je v izdelavi";
   languages[0].pricing_text1 = "OSNOVNI";
   languages[0].pricing_text2 = "uro";
   languages[0].pricing_text3 = "NAPREDNI";
@@ -52,6 +53,7 @@ export function info(props) {
   languages[0].form_text2 = "Sporočilo";
   languages[0].form_text3 = "opcijsko: vključite primere spletnih strani";
   languages[0].form_text4 = "Pošlji sporočilo";
+  languages[0].form_text5 = "Sporočilo poslano";
 
   languages[1].navi_text1 = "About me";
   languages[1].navi_text2 = "My work";
@@ -72,6 +74,7 @@ export function info(props) {
   languages[1].work_text5 = "Web";
   languages[1].work_text6 = "app";
   languages[1].work_text7 = "PC part picker";
+  languages[1].work_text8 = "Website in the making";
   languages[1].pricing_text1 = "BASIC";
   languages[1].pricing_text2 = "hour";
   languages[1].pricing_text3 = "ENTERPRISE";
@@ -89,6 +92,7 @@ export function info(props) {
   languages[1].form_text2 = "Message";
   languages[1].form_text3 = "optional: include website examples";
   languages[1].form_text4 = "Send message";
+  languages[1].form_text5 = "Message sent";
 
 
   const colors = [

@@ -241,7 +241,6 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      console.log(scrollPosition)
 
       if (s_width <= 445){
         if (scrollPosition < 1326) {
@@ -495,7 +494,7 @@ function App() {
           </div>
         </div>
         <div className={`${styles.two} observed`} ref={divRef}>
-          <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
+          <div onClick={()=> { createNotification("info", language.work_text8) }} className={`${styles.content} ${styles.hidden} fade-in-div`}>
             <div id="two"></div>
             <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>{language.navi_text2}</div>
             <div style={{marginBottom: "70px"}} className={styles["new-work-block"]}>
@@ -506,7 +505,7 @@ function App() {
               <p><span style={{color: color.value}}>{language.work_text4}</span> <span className={styles["white-to-black"]}>100€</span></p>
               <div style={{background: "#e0e0e0"}}></div>
             </div>
-            <div className={styles["new-work-block"]}>
+            <div onClick={()=> { createNotification("info", language.work_text8) }} className={styles["new-work-block"]}>
               <img src={WebApp}></img>
               <div></div>
               <p><span style={{color: color.value}}>{language.work_text5}</span> {language.work_text6}</p>
@@ -592,11 +591,9 @@ function App() {
   function submitMessage(e){
     e.preventDefault();
 
-    console.log(route)
-
     axios.post(`${route}/api/message/sendMessage`, { fullName, email, budget, plan: websiteOption, message}, { withCredentials: true }).then(res => {
       if (res.status === 200) {
-        createNotification("success", "Message sent");
+        createNotification("success", language.form_text5);
         clearForm();
       } else {
         createNotification("error", "Something went wrong");
