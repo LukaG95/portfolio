@@ -37,7 +37,7 @@
 
   padding-left: 32px;
 
-  background: #131313;
+  background: #181818;
   //border-right: 1px solid #2B2B2B;
 
   .placeholder{
@@ -154,7 +154,7 @@
         height: 40px;
 
         margin-right: 10px;
-        background: #131313;
+        background: #181818;
 
         border: 2px solid #4b4b4b;
         border-radius: 100%;
@@ -247,7 +247,7 @@
     flex-direction: column;
     align-items: center;
 
-    background: #131313;
+    background: #181818;
     //border-bottom: 1px solid #2B2B2B;
 
     padding-top: 80px;
@@ -360,7 +360,7 @@
       border: 1px solid #3f3f3f;
       border-radius: 30px;
 
-      background: #131313;
+      background: #181818;
 
       height: 260px;
       width: 780px;
@@ -399,7 +399,7 @@
   }
 
   .two{
-    background: #131313;
+    background: #181818;
 
     padding-top: 120px;
 
@@ -613,7 +613,7 @@
 
   .three{
     padding-top: 120px;
-    background: #131313;
+    background: #181818;
 
     .content{
       transition: opacity 1.5s ease, transform 0.75s ease;
@@ -707,7 +707,7 @@
   position: relative;
 }
 .right{
-  background: #131313;
+  background: #181818;
   justify-self: end;
 
   height: auto;
@@ -1018,7 +1018,7 @@
     padding-left: 25px;
     padding-right: 25px;
 
-    animation: appearFromLeft 1s ease;
+    animation: appearFromLeft 1s, ease appear 1s;
   }
 
   .middle .one .main-text {
@@ -1113,6 +1113,7 @@
     box-shadow: 0px 4px 11.1px 3px rgba(0, 0, 0, 0.35);
 
     border-bottom: 1px solid #2B2B2B;
+    animation: appearFromRight 1s ease, appear 1s ease;
   }
 
 }

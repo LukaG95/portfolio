@@ -44,7 +44,7 @@ import WebApp from './images/web app.png';
 import { AppContext } from './context/AppContext';
 
 function App() {
-  const [showWebsite, setShowWebsite] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const [fullName, setFullName] = useState('');
