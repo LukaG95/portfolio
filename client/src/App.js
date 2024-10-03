@@ -315,19 +315,6 @@ function App() {
         }
       }
 
-      
-    /*   if (s_width <= 1130){
-        if (scrollPosition < 1530) {
-          setSelectedIndex(0);
-        } else if (scrollPosition >= 1530 && scrollPosition < 2700) {
-          setSelectedIndex(1);
-        } else if (scrollPosition >= 2700 && scrollPosition < 4400) {
-          setSelectedIndex(2);
-        } else {
-          setSelectedIndex(3);
-        }
-      } */
-
       else {
         if (scrollPosition < 400) {
           setSelectedIndex(0);

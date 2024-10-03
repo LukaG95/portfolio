@@ -37,6 +37,5 @@ html {
 
 html, body, #root{
   height: 100%;
-  overflow-x: hidden;
-  /* because of transation animation, putting it in .app will remove the sticky from placeholder*/
+  /* because of transition animation, putting it in .app will remove the sticky from placeholder*/
 }
