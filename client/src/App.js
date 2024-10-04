@@ -149,13 +149,12 @@ function App() {
       const chosenIndex = availableIndexes[randomIndex];
     
       const final_word = words[chosenIndex][language.name];
-
       usedIndexes.push(chosenIndex);
 
       if (usedIndexes.length >= words.length) usedIndexes = [];
       
       setCurrentWord(final_word);
-
+    
     }
 
     function handleAnimationIteration() {
@@ -170,7 +169,7 @@ function App() {
         innerDiv.removeEventListener('animationiteration', handleAnimationIteration);
       };
     }
-  }, [language]);
+  }, [language, showWebsite]);
 
   const website_options = {
     SLO: [
