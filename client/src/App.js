@@ -504,7 +504,7 @@ function App() {
               <p><span style={{color: color.value}}>{language.work_text4}</span> <span className={styles["white-to-black"]}>100€</span></p>
               <div style={{background: "#e0e0e0"}}></div>
             </div>
-            <div onClick={()=> { window.location.replace("https://part-picker-28e08f70601f.herokuapp.com/"); }} className={styles["new-work-block"]}>
+            <div onClick={()=> { window.open("https://part-picker-28e08f70601f.herokuapp.com/"); }} className={styles["new-work-block"]}>
               <img src={WebApp}></img>
               <div></div>
               <p><span style={{color: color.value}}>{language.work_text5}</span> {language.work_text6}</p>
