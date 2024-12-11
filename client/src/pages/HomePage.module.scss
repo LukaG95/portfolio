@@ -1,0 +1,35 @@
+.home{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+
+}
+
+.main-wrapper{
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  overflow: auto;
+  gap: 1px;
+  margin-top: 1px;
+
+  overflow: hidden;
+}
+
+.portal-root{
+  position: absolute;
+}
+
+@media (max-width: 1150px) {
+  .hide-on-pc {
+    display: none !important;
+  }
+
+  .main-wrapper{
+    display: unset;
+    flex-grow: unset;
+    margin-top: 0px;
+  }
+}

@@ -136,7 +136,7 @@ function App() {
 
   const randomIndex = Math.floor(Math.random() * words.length);
   let usedIndexes = [randomIndex];
-  const [currentWord, setCurrentWord] = useState(words[randomIndex][language.name]);
+  const [currentWord, setCurrentWord] = useState("");
 
   const innerDivRef = useRef(null);
 
@@ -504,7 +504,7 @@ function App() {
               <p><span style={{color: color.value}}>{language.work_text4}</span> <span className={styles["white-to-black"]}>100€</span></p>
               <div style={{background: "#e0e0e0"}}></div>
             </div>
-            <div onClick={()=> { createNotification("info", language.work_text8) }} className={styles["new-work-block"]}>
+            <div onClick={()=> { window.location.replace("https://part-picker-28e08f70601f.herokuapp.com/"); }} className={styles["new-work-block"]}>
               <img src={WebApp}></img>
               <div></div>
               <p><span style={{color: color.value}}>{language.work_text5}</span> {language.work_text6}</p>
