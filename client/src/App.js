@@ -383,7 +383,7 @@ function App() {
      {/*  <div className={styles.dimensions}>{s_width}</div>
       <div className={styles.dimensions} style={{top: "40px"}}>{s_height}</div> */}
       <div className={styles.left}>
-        <div className={styles.placeholder}>
+        <div className={styles.placeholder} style={{boxShadow: `0px 0px 8px ${color.value}33`}}>
           <div className={styles.top}>
             <div>Luka</div>
             <div>
@@ -463,7 +463,7 @@ function App() {
               </> : 
               <>
                 <div className={styles["main-text"]}>{language.main_text1} <span style={{color: color.value}}>Luka</span>{language.main_text2} <span style={{color: color.value}}>full-stack</span> {language.main_text3}</div>
-                <div className={styles["new-skills-outer"]}>
+                <div className={styles["new-skills-outer"]} style={{boxShadow: `0px 0px 8px ${color.value}33`}}>
 
                   <div>
                     <div className={styles["random-word"]}>{currentWord.toUpperCase()}</div>
@@ -521,13 +521,13 @@ function App() {
               <div className={`${styles["price-wrapper"]} ${styles.hidden} fade-in-div`}>
                 <PriceBlock 
                   title={language.pricing_text1}
-                  price={15}
+                  price={10}
                   benefits={[language.pricing_text5, language.pricing_text6]}
                   chooseOption={() => setWebsiteOption(website_options[language.name][0])}
                 />
                 <PriceBlock 
                   title={language.pricing_text3}
-                  price={25}
+                  price={15}
                   background={true}
                   benefits={[language.pricing_text7, language.pricing_text8, language.pricing_text9, language.pricing_text10]}
                   chooseOption={() => setWebsiteOption(website_options[language.name][1])}

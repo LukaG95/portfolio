@@ -1,6 +1,8 @@
+@import 'variables';
+
 .hover-border-red{
   &:hover{
-    border-color: #BB5858 !important;
+    border-color: var(--red) !important;
   }
 }
 .hover-border-green{
@@ -52,9 +54,11 @@
     margin-right: 0px;
     padding: 50px;
 
-    border: 1px solid #3f3f3f;
+    //border: 1px solid #3f3f3f;
+    border: 1px solid #292929;
 
-    box-shadow: 0px 4px 11.1px 3px rgba(0, 0, 0, 0.35);
+    //box-shadow: 0px 0px 8px var(--red-opacity);
+    
     border-radius: 30px;
 
     animation: appearFromLeft 1s ease, appear 1s ease;
@@ -163,7 +167,7 @@
         transition: border 0.3s ease-in-out; 
 
         &:hover{
-         // border: 2px solid #BB5858;
+         // border: 2px solid var(--red);
         }
       
         &:active{
@@ -314,11 +318,11 @@
 
       margin-top: 80px;
 
-      border: 1px solid #3f3f3f;
+      border: 1px solid #292929;
       border-radius: 30px;
 
-      box-shadow: 0px 4px 11.1px 5px rgba(0, 0, 0, 0.25);
-
+      box-shadow: 0px 0px 8px var(--red-opacity);
+      
       >:nth-child(1), >:nth-child(2){
         display: flex;
         justify-content: center;
@@ -357,7 +361,7 @@
       
       align-items: center;
 
-      border: 1px solid #3f3f3f;
+      border: 1px solid #292929;
       border-radius: 30px;
 
       background: #131313;
@@ -365,7 +369,7 @@
       height: 260px;
       width: 780px;
 
-      box-shadow: 0px 4px 11.1px 10px rgba(0, 0, 0, 0.25);
+      box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.2), 4px 0px 8px rgba(0, 0, 0, 0.2);
 
       animation: move 2s infinite;
 
@@ -466,7 +470,7 @@
 
       
       .preview-button{
-        background: #BB5858;
+        background: var(--red);
 
         height: 30px;
         width: 132px;
@@ -666,7 +670,7 @@
         justify-content: center;
 
         color: #f6f6f6;
-        background: #BB5858;
+        background: var(--red);
 
         padding: 13px 75px;
 
@@ -693,7 +697,7 @@
 
         &:disabled:hover,
         &:disabled:active {
-          background: #BB5858; 
+          background: var(--red); 
           padding: 13px 75px;
           border-bottom: 5px solid #AA4C4C;
         }

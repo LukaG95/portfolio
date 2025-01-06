@@ -1,3 +1,5 @@
+@import '../variables';
+
 .price-block{
   position: relative;
 
@@ -67,7 +69,7 @@
     align-items: center;
     justify-content: center;
 
-    background: #BB5858;
+    background: var(--red);
 
     padding: 10px;
 

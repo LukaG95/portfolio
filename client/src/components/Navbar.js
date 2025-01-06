@@ -63,7 +63,7 @@ function Navbar({ selectedIndex, setSelectedIndex, setShowSidebar }) {
 
       </div>
 
-      <div className={styles.navi}>
+      <div className={styles.navi} style={{boxShadow: `0px 0px 8px ${color.value}33`}}>
         <NavItem
           imageSrc={User}
           width={22}

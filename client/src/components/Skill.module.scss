@@ -1,3 +1,4 @@
+@import '../variables';
 
 .skill{
   display: flex;
@@ -44,8 +45,7 @@
     transform: translateY(-10%);
     border: 1px solid #7c3b3b;
     background: #1E1414;
-    color: #BB5858;
-    
+    color: var(--red);
   }
 
 }
