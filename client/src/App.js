@@ -38,8 +38,7 @@ import Twitter from './images/twitter.png';
 import Instagram from './images/instagram.png'; 
 import Facebook from './images/facebook.png'; 
 
-import SimpleWebsite from './images/simple website.png'; 
-import AdvancedWebsite from './images/advanced website.png';
+import SimpleWebsite from './images/barber.png'; 
 import WebApp from './images/web app.png'; 
 import { AppContext } from './context/AppContext';
 
@@ -496,7 +495,7 @@ function App() {
           <div onClick={()=> { createNotification("info", language.work_text8) }} className={`${styles.content} ${styles.hidden} fade-in-div`}>
             <div id="two"></div>
             <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>{language.navi_text2}</div>
-            <div style={{marginBottom: "70px"}} className={styles["new-work-block"]}>
+            <div onClick={()=> { window.open("https://frizerski-b5b80a1cae65.herokuapp.com/"); }} style={{marginBottom: "70px"}} className={styles["new-work-block"]}>
               <img src={SimpleWebsite}></img>
               <div></div>
               <p className={styles["white-to-black"]}><span style={{color: color.value}}>{language.work_text1}</span> {language.work_text2}</p>

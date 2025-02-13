@@ -30,7 +30,7 @@ export function info(props) {
   languages[0].skills_text1 = "STRANI";
   languages[0].work_text1 = "Preprosta";
   languages[0].work_text2 = "stran";
-  languages[0].work_text3 = "Razširite svoje poslovanje";
+  languages[0].work_text3 = "Frizerski salon";
   languages[0].work_text4 = "od";
   languages[0].work_text5 = "Spletna";
   languages[0].work_text6 = "aplikacija";
@@ -69,7 +69,7 @@ export function info(props) {
   languages[1].skills_text1 = "WEBSITES";
   languages[1].work_text1 = "Basic";
   languages[1].work_text2 = "website";
-  languages[1].work_text3 = "Grow your business";
+  languages[1].work_text3 = "Barbershop";
   languages[1].work_text4 = "from";
   languages[1].work_text5 = "Web";
   languages[1].work_text6 = "app";
