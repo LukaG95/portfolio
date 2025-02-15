@@ -7,16 +7,14 @@
   height: 50px;
   width: 50px;
 
-  border-radius: 10px;
-  
+  background: #1a1a1a;
   margin-bottom: 15px;
 
   cursor: pointer;
-
   transition: background 0.25s ease, border 0.25s ease; 
 
-  background: #1a1a1a;
   border: 1px solid rgb(39, 39, 39);
+  border-radius: 10px;
   
   &:hover{
     background: #1f1f1f;
@@ -33,7 +31,6 @@
     transition: filter 0.75s ease; 
   }
 }
-
 
 @media (max-width: 950px) {
   .navi-background{ 

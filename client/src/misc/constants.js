@@ -1,12 +1,15 @@
-
-import { useState } from 'react';
-
 import PaintRed from '../images/paint red.png';
 import PaintGreen from '../images/paint green.png';
 import PaintBlue from '../images/paint blue.png';
 
-export function info(props) {
+import ReactLogo from "../images/react.png";
+import NodeLogo from "../images/nodejs.png";
+import FigmaLogo from "../images/figma.png";
+import MongoDBLogo from "../images/mongodb.png";
+import HerokuLogo from "../images/heroku.png";
+import GithubLogo from "../images/github.png";
 
+export function constants() {
   let route;
   if (process.env.NODE_ENV === "production") route = "https://lukagolob.com";
   else route = "http://localhost:5000";
@@ -94,12 +97,90 @@ export function info(props) {
   languages[1].form_text4 = "Send message";
   languages[1].form_text5 = "Message sent";
 
-
   const colors = [
     { name: "red", src: PaintRed, value: "#BB5858", dark: "#AA4C4C", low: "#322020"},
     { name: "green", src: PaintGreen, value: "#66a549", dark: "#5c9244", low: "#273220"},
     { name: "blue", src: PaintBlue, value: "#4969d4", dark: "#3f5dbd", low: "#202636"},
   ];
 
-  return { languages, colors, route }
+  const skills = [{
+      logo: ReactLogo,
+      name: "ReactJS",
+      width: "60px"
+    },{
+      logo: NodeLogo,
+      name: "NodeJS",
+      width: "55px"
+    },{
+      logo: GithubLogo,
+      name: "Github",
+      width: "55px"
+    },{
+      logo: MongoDBLogo,
+      name: "MongoDB",
+      width: "48px",
+      padding: "5px",
+      margin: "8px"
+    },{
+      logo: HerokuLogo,
+      name: "Heroku",
+      width: "46px",
+      padding: "5px",
+      margin: "5px"
+    }, {
+      logo: FigmaLogo,
+      name: "Figma",
+      width: "38px",
+      padding: "10px",
+      margin: "9px"
+    }
+  ] 
+
+  const words = [
+    {
+      ENG: "fast",
+      SLO: "hitre"
+    },
+    {
+      ENG: "modern",
+      SLO: "moderne"
+    },
+    {
+      ENG: "beautiful",
+      SLO: "privlačne"
+    },
+    {
+      ENG: "timeless",
+      SLO: "večne"
+    },
+    {
+      ENG: "secure",
+      SLO: "varne"
+    },
+    {
+      ENG: "dynamic",
+      SLO: "dinamične"
+    },
+    {
+      ENG: "unique",
+      SLO: "univerzalne"
+    },
+    {
+      ENG: "edgy",
+      SLO: "drzne"
+    }
+  ]
+
+  const website_options = {
+    SLO: [
+      { name: "Osnovni" },
+      { name: "Napredni" }
+    ],
+    ENG: [
+      { name: "Basic" },
+      { name: "Enterprise" }
+    ]
+  }
+
+  return { languages, colors, route, skills, words, website_options }
 }

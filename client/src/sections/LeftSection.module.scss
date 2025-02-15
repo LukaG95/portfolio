@@ -1,0 +1,213 @@
+@import '../animations.module.scss';
+
+.left{
+  color: #f6f6f6;
+ 
+  font-weight: 500;
+  font-size: 24px;
+
+  height: auto;
+  width: fit-content;
+
+  padding-left: 32px;
+
+  background: #131313;
+
+  .placeholder{
+    position: sticky;
+    top: 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-right: 0px;
+    padding: 50px;
+
+    border: 1px solid #292929;
+    border-radius: 30px;
+
+    animation: appearFromLeft 1s ease, appear 1s ease;
+
+    .top{
+      display: flex;
+      margin-bottom: 40px;
+
+      justify-content: space-between;
+      align-items: end;
+
+      width: 100%;
+
+      >:nth-child(1){
+        font-size: 32px;
+        font-weight: 400;
+
+        line-height: 80%;
+      }
+
+      :nth-child(2){
+        font-weight: 350;
+        font-size: 14px;
+        line-height: 90%;
+
+        text-align: end;
+      }
+
+      :nth-child(2) :nth-child(2){
+        margin-top: 5px;
+      }
+
+      img{
+        position: absolute;
+
+        top: 15px;
+        right: 55px;
+        width: 75px;
+
+        opacity: 0.1;
+        background: none;
+
+        transform: rotate(-30deg);
+      }
+    }
+
+    .profile-image{
+      background: #929292;
+      border-radius: 50px;
+
+      width: 267px;
+      height: 263px;
+
+      filter: brightness(0.25);
+
+      &:hover{
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+      }
+    }
+
+    .mail-place{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      color: #777777;
+      padding: 35px 0px;
+
+      font-size: 14px;
+      font-weight: 400;
+
+      :nth-child(1){
+        margin-bottom: 8px;
+      }
+    }
+
+    .socials{
+      display: flex;
+      justify-content: center;
+
+      padding-bottom: 35px;
+
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        margin-right: 10px;
+        background: #131313;
+
+        border: 2px solid #4b4b4b;
+        border-radius: 100%;
+
+        cursor: pointer;
+        transition: border 0.3s ease-in-out; 
+      
+        &:active{
+          filter: brightness(1.2);
+        }
+
+        img{
+          width: 16px;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .hire-me-button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      max-width: 500px;
+      padding: 13px;
+
+      font-weight: 650;
+      font-size: 16px;
+
+      border-bottom: 5px solid;
+      border-radius: 50px;
+
+      cursor: pointer;
+      user-select: none;
+
+      &:hover{
+        filter: brightness(1.035);
+      }
+
+      &:active{
+        filter: brightness(1.08);
+        padding: 15.5px;
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .left .placeholder{
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 950px) {
+  .left{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+
+    order: 2;
+    animation: appearFromLeft 1s ease, appear 1s ease;
+  }
+  
+  .left .placeholder{
+    border: none;
+    padding: 30px;
+    box-shadow: none;
+    
+    width: 100%;
+    max-width: 400px;
+    
+    margin-right: 0px;
+    
+    .top img{
+      top: 0px;
+      right: 40px;
+      
+      width: 70px;
+    }
+    
+    .profile-image{
+      width: 100%;
+      max-width: 300px;
+      height: 100%;
+    }
+  }
+}

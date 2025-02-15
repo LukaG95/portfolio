@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './FilterItem.module.scss';
 import useWindowDimensions from '../WindowDimensions.js';
 
 const FilterItem = ({ options, currentOption, onOptionChange, isImageOption, moreLength }) => {
   const [open, setOpen] = useState(false);
-  const { s_width, s_height } = useWindowDimensions();
+  const { s_width } = useWindowDimensions();
 
   return (
     <div 

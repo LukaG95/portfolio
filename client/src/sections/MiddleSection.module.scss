@@ -1,0 +1,21 @@
+.middle{
+  color: #f6f6f6;
+  width: 100%;
+
+  .one, .two, .three, .four{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: #131313;
+
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 950px) {
+  .middle{
+    order: 3;
+  }
+}

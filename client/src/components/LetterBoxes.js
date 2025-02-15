@@ -1,44 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './LetterBoxes.module.scss';
+import { constants } from "../misc/constants";
 
 function LetterBoxes({ language }) {
   const [letters, setLetters] = useState(Array(10).fill(''));
-
-  const words = [
-    {
-      ENG: "fast",
-      SLO: "hitre"
-    },
-    {
-      ENG: "modern",
-      SLO: "moderne"
-    },
-    {
-      ENG: "beautiful",
-      SLO: "privlačne"
-    },
-    {
-      ENG: "timeless",
-      SLO: "večne"
-    },
-    {
-      ENG: "secure",
-      SLO: "varne"
-    },
-    {
-      ENG: "dynamic",
-      SLO: "dinamične"
-    },
-    {
-      ENG: "unique",
-      SLO: "edinstvene"
-    },
-    {
-      ENG: "edgy",
-      SLO: "drzne"
-    }
-  ]
-
+  const { words } = constants();
 
   const alphabet = "abcdefghijklmnopqrstuvwyz";
   let usedIndexes = [];
@@ -59,7 +25,6 @@ function LetterBoxes({ language }) {
 
       const final_word = words[chosenIndex][language.name];
       
-  
       // Start the interval to generate random letters
       intervalId = setInterval(() => {
         setLetters(prevLetters => 
@@ -77,11 +42,11 @@ function LetterBoxes({ language }) {
         }
         setLetters(newLetters); // Set the final word in the letter boxes
   
-        // Wait for 3 seconds before restarting the process
+        // Wait for 1.5 seconds before restarting the process
         timeoutId = setTimeout(() => {
-          startAnimation(); // Restart the animation
-        }, 3000);
-      }, 1500); // After 1.5 seconds
+          startAnimation(); 
+        }, 1500);
+      }, 1500);
     };
   
     startAnimation(); // Initial start of the animation

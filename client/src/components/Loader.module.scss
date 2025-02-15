@@ -4,7 +4,6 @@
   position: relative;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -32,7 +31,6 @@
   grid-template-columns: repeat(2, 1fr); 
   animation: gapChange 1s ease-in-out infinite, rotationChange 2s ease infinite;
 
-
   .puzzle-cube{
     position: relative;
 
@@ -41,9 +39,7 @@
 
     background-color: #181818;
     animation: colorChange 1s ease infinite;
-
   }
-
 
   :nth-child(1).puzzle-cube{
     border-radius: 15px 0px 0px 0px;
@@ -74,9 +70,7 @@
 
       border-radius: 0px 0px 25px 25px;
     }
-
   }
-
 
   :nth-child(2).puzzle-cube{
     border-radius: 0px 15px 0px 0px;
@@ -135,6 +129,7 @@
       border-radius: 25px 0px 0px 25px; 
     }
   }
+
   :nth-child(4).puzzle-cube{
     border-radius: 0px 0px 15px 0px;
 
@@ -166,11 +161,7 @@
       border-radius: 25px 0px 0px 25px;
     }
   }
-
 }
-
-
-
 
   @keyframes colorChange {
     0% {

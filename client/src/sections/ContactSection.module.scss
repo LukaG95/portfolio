@@ -1,0 +1,130 @@
+@import '../animations.module.scss';
+
+.four{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #131313;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  
+  border-bottom: none; // leave this
+
+  .content{
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    transition: opacity 1.5s ease, transform 0.75s ease;
+
+    .navi-text-on-middle{
+      border: 1px solid #3f3f3f;
+      width: fit-content;
+    
+      padding: 9px 19px;
+      border-radius: 13px;
+    
+      font-size: 16px;
+      font-weight: 400;
+    
+      margin-bottom: 18px;
+    
+    }
+  }
+
+  form{
+    width: 100%;
+    max-width: 700px;
+    
+    >div{
+      display: flex;
+      justify-content: space-between;
+
+      position: relative;
+
+      margin-bottom: 95px; 
+    }
+
+    >div:nth-of-type(2){
+      height: 62px;
+    }
+
+    button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #f6f6f6;
+      background: var(--red);
+
+      padding: 13px 75px;
+      
+      font-weight: 650;
+      font-size: 16px;
+      
+      border: none;
+      border-bottom: 5px solid #AA4C4C;
+      border-radius: 50px;
+
+      cursor: pointer;
+      user-select: none;
+     
+      &:hover{
+        background: #c45c5c;
+      }
+
+      &:active{
+        background: #ca5f5f;
+        padding: 15.5px 75px;
+        border-bottom: none;
+      }
+
+      &:disabled:hover,
+      &:disabled:active {
+        background: var(--red); 
+        padding: 13px 75px;
+        border-bottom: 5px solid #AA4C4C;
+      }
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .four{
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 1180px){
+  .four form{
+    >div{
+      margin-bottom: 70px;
+    }
+  
+    >:nth-child(1){
+      flex-direction: column;
+      height: 140px;
+    }
+  
+    >:nth-child(2){
+      flex-direction: column;
+      height: 165px !important;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .four{
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    animation: appearFromLeft 1s, ease appear 1s;
+  }
+}
+
+@media (max-width: 500px) {
+  .four form button{
+    width: 100%;
+  }
+}

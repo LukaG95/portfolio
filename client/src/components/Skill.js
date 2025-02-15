@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Skill.module.scss'; // Assuming you're using CSS modules for styling
+import styles from './Skill.module.scss';
 
 const Skill = ({ imageSrc, imageHoverSrc, name, width }) => {
   const [hover, setHover] = useState(false);

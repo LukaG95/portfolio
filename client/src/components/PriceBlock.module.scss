@@ -2,21 +2,18 @@
 
 .price-block{
   position: relative;
+  flex: 1;
 
+  min-width: 300px;
   height: 590px;
 
   border: 1px solid #3f3f3f;
   border-radius: 25px;
 
   padding: 40px 45px;
-
   transition: border 0.35s ease;
 
   cursor: pointer;
-
-  flex: 1;
-
-  min-width: 300px;
 
   .title, .benefits, .price{
     color: #F6F6F6;
@@ -24,12 +21,11 @@
 
   .title{
     display: flex;
+    align-items: center;
+    justify-content: start;
 
     font-size: 20px;
     font-weight: 700;
-
-    align-items: center;
-    justify-content: start;
 
     margin-left: -45px;
     margin-right: -45px;
@@ -38,7 +34,6 @@
     padding: 30px 50px;
 
     border-radius: 25px 25px 0px 0px;
-
   }
 
   .price-per-hour{
@@ -69,9 +64,8 @@
     align-items: center;
     justify-content: center;
 
+    width: 100%;
     background: var(--red);
-
-    padding: 10px;
 
     font-weight: 600;
     font-size: 16px;
@@ -79,8 +73,7 @@
     border-bottom: 5px solid #AA4C4C;
     border-radius: 15px;
 
-    width: 100%;
-
+    padding: 10px;
     letter-spacing: 0.2px;
 
     cursor: pointer;
@@ -96,6 +89,4 @@
       border-bottom: none;
     }
   }
-  
-
 }

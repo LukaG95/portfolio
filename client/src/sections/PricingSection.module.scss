@@ -1,0 +1,60 @@
+@import '../animations.module.scss';
+
+.three{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #131313;
+
+  padding-top: 120px;
+  padding-bottom: 50px;
+
+  .content{
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    transition: opacity 1.5s ease, transform 0.75s ease;
+
+    .navi-text-on-middle{
+      border: 1px solid #3f3f3f;
+      width: fit-content;
+    
+      padding: 9px 19px;
+      border-radius: 13px;
+    
+      font-size: 16px;
+      font-weight: 400;
+    
+      margin-bottom: 18px;
+    }
+  }
+
+  .price-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 80px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .three{
+    border-bottom: none;
+  }
+
+  .three .price-wrapper{
+    gap: 40px;
+  }
+}
+
+@media (max-width: 950px) {
+  .three{
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    animation: appearFromLeft 1s, ease appear 1s;
+  }
+}
