@@ -74,7 +74,7 @@ function HeroSection({ innerDivRef, currentWord }) {
           </> : 
           <>
             <div className={styles["main-text"]}>{language.main_text1} <span style={{color: color.value}}>Luka</span>{language.main_text2} <span style={{color: color.value}}>full-stack</span> {language.main_text3}</div>
-            <div className={styles["new-skills-outer"]} style={{boxShadow: `0px 0px 8px ${color.value}33`}}>
+            <div className={styles["new-skills-outer"]}>
               <div> <div className={styles["random-word"]}>{currentWord.toUpperCase()}</div> </div>
               <div> <div className={styles["website-text"]}>{language.skills_text1}</div> </div>
               <div ref={innerDivRef} className={styles["new-skills-inner"]}>

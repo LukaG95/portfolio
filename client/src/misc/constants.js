@@ -28,7 +28,7 @@ export function constants() {
   languages[0].main_text3 = "razvijalec";
   languages[0].middle_text1 = "Rad izdelujem";
   languages[0].placeholder_text1 = "Spletni oblikovalec";
-  languages[0].placeholder_text2 = "in razvijalec";
+  languages[0].placeholder_text2 = "razvijalec";
   languages[0].placeholder_text3 = "Najemi me!";
   languages[0].skills_text1 = "STRANI";
   languages[0].work_text1 = "Preprosta";
@@ -67,7 +67,7 @@ export function constants() {
   languages[1].main_text3 = "developer";
   languages[1].middle_text1 = "I love creating";
   languages[1].placeholder_text1 = "Web designer";
-  languages[1].placeholder_text2 = "and developer";
+  languages[1].placeholder_text2 = "developer";
   languages[1].placeholder_text3 = "Hire me!";
   languages[1].skills_text1 = "WEBSITES";
   languages[1].work_text1 = "Basic";

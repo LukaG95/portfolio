@@ -9,7 +9,7 @@
 
   padding-top: 80px;
   padding-bottom: 50px;
-  
+
   .content{
     width: 100%;
     max-width: 850px;
@@ -76,12 +76,12 @@
     height: 260px;
     width: 850px;
 
-    margin-top: 80px;
+    margin-top: 100px;
 
     border: 1px solid #292929;
     border-radius: 30px;
 
-    box-shadow: 0px 0px 8px var(--red-opacity);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
     
     >:nth-child(1), >:nth-child(2){
       display: flex;
@@ -93,7 +93,7 @@
 
     .random-word, .website-text{
       font-size: 24px;
-      font-weight: 800;
+      font-weight: 700;
 
       color: #f6f6f6;
       opacity: 0.2;
@@ -118,7 +118,7 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
 
-    border: 1px solid #292929;
+    border: 1px solid #414141;
     border-radius: 30px;
 
     background: #131313;
@@ -154,6 +154,11 @@
       img{
         margin-right: 15px;
       }
+    }
+
+    .new-skill{
+      font-size: 20px;
+      font-weight: 400
     }
   }
 }

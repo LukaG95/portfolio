@@ -15,7 +15,7 @@ function LeftSection({ handleNavItemClick }) {
 
   return (
     <div className={styles.left}>
-      <div className={styles.placeholder} style={s_width > 950 ? {boxShadow: `0px 0px 8px ${color.value}33`} : {}}>
+      <div className={styles.placeholder}>
         <div className={styles.top}>
           <div>Luka</div>
           <div>
@@ -24,7 +24,11 @@ function LeftSection({ handleNavItemClick }) {
           </div>
           <img src={Logo}  />
         </div>
-        <img className={styles["profile-image"]} src={Profile}  />
+        <div className={styles["profile-image-wrapper"]}>
+          <div className={styles["profile-image-background"]}></div>
+          <img className={styles["profile-image"]} src={Profile}  />
+
+        </div>
         <div className={styles["mail-place"]}>
           <div>glukec4@gmail.com</div>
           <div>Ljubljana, SL</div>
