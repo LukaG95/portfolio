@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     setTimeout(()=> {
       setShowWebsite(true);
-    }, 0);    
+    }, 2000);    
   }, [])
 
   useEffect(() => {
