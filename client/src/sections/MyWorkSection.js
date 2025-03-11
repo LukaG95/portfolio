@@ -1,7 +1,6 @@
 import { useContext, useRef } from 'react';
 import styles from './MyWorkSection.module.scss';
 import { AppContext } from "../context/AppContext";
-import { createNotification } from "../misc/toast";
 
 import SimpleWebsite from "../images/barber.png";
 import WebApp from "../images/web app.png";
@@ -12,7 +11,7 @@ function MyWorkSection() {
 
   return (
     <div className={`${styles.two} observed`} ref={divRef}>
-      <div onClick={()=> { createNotification("info", language.work_text8) }} className={`${styles.content} ${styles.hidden} fade-in-div`}>
+      <div className={`${styles.content} ${styles.hidden} fade-in-div`}>
         <div id="two"></div>
         <div style={{marginBottom: "50px"}} className={styles["navi-text-on-middle"]}>{language.navi_text2}</div>
         <div onClick={()=> { window.open("https://frizerski-b5b80a1cae65.herokuapp.com/"); }} style={{marginBottom: "70px"}} className={styles["work-block"]}>
