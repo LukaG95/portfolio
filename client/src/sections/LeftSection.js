@@ -31,7 +31,7 @@ function LeftSection({ handleNavItemClick }) {
 
         </div>
         <div className={styles["mail-place"]}>
-          <div>glukec4@gmail.com</div>
+          <div>dev@lukagolob.com</div>
           <div>Ljubljana, SL</div>
         </div>
         <div className={styles.socials}>
